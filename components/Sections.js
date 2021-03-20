@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 import styles from "../styles/Sections.module.css";
