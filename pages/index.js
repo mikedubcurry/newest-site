@@ -1,19 +1,13 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-
-import { Description } from "../components/Description";
-import { Sections } from "../components/Sections";
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
-    return (
-        <div className={styles.container}>
-            <header>
-                <h1>
-                    Mike <span className={styles.lastname}>Curry</span>
-                </h1>
-                <Description />
-            </header>
-            <Sections />
-        </div>
-    );
+  return (
+    <div >
+      <Head>
+        <title>Mike_Curry_dev</title>
+      </Head>
+    starting from scratch, with a11y at top-of-mind
+    </div>
+  )
 }
