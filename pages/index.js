@@ -13,8 +13,10 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>Mike_Curry_dev</title>
+				<title>{data.posts[0].data.title}</title>
 			</Head>
+			<h1>{data.posts[0].data.title}</h1>
+			<p>{data.posts[0].data.summary}</p>
 			<div dangerouslySetInnerHTML={data.posts[0]}/>
 		</div>
 	);
