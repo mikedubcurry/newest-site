@@ -1,0 +1,12 @@
+.header {
+  height: 15vh;
+}
+.lastname {
+  display: block;
+}
+
+@media screen and (min-width: 500px) {
+  .lastname {
+    display: inline;
+  }
+}
