@@ -6,20 +6,39 @@ const descs = [
 	'Motorcycle Rider',
 	'Cat-Person',
 	'Guitarist',
+	'So Much More',
 ];
 
 export default function Header() {
-	const [desc, setDesc] = useState(descs[0]);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
-	console.log(reducedMotion);
+
 	return (
 		<header className={styles.header}>
 			<div>
 				Mike <span className={styles.lastname}>Curry</span>
 			</div>
+			<Description hasMounted={hasMounted} noAnime={reducedMotion} />
 		</header>
 	);
+}
+
+function Description({ hasMounted, noAnime }) {
+	const [idx, setIdx] = useState(0);
+
+	useEffect(() => {
+		let t = setTimeout(() => {
+			setIdx((idx + 1) % descs.length);
+		}, 2000);
+		return () => {
+			clearTimeout(t);
+		};
+	}, [idx]);
+
+	if (!hasMounted) return '';
+	if (noAnime) {
+		return <span className={styles.descLong}>{descs.join(', ')}</span>;
+	} else return <span className={styles.descShort}>{descs[idx]}</span>;
 }
 
 function useHasMounted() {

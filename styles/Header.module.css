@@ -1,12 +1,18 @@
 .header {
-  height: 15vh;
+	height: 15vh;
 }
 .lastname {
-  display: block;
+	display: block;
 }
 
+.descLong {
+	/* no animation, long text styles */
+}
+.descShort {
+	/* yes animation, short text styles */
+}
 @media screen and (min-width: 500px) {
-  .lastname {
-    display: inline;
-  }
+	.lastname {
+		display: inline;
+	}
 }
