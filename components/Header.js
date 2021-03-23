@@ -1,14 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useTransition, animated } from 'react-spring';
-import styles from '../styles/Header.module.css';
 
-const descs = [
-	'JavaScript Developer',
-	'Motorcycle Rider',
-	'Cat-Person',
-	'Guitarist',
-	'So Much More',
-];
+import Description from './Description';
+import styles from '../styles/Header.module.css';
 
 export default function Header() {
 	const hasMounted = useHasMounted();
@@ -23,56 +16,6 @@ export default function Header() {
 		</header>
 	);
 }
-
-function Description({ hasMounted, noAnime }) {
-	const [idx, setIdx] = useState(0);
-
-	useEffect(() => {
-		let t = setTimeout(() => {
-			setIdx((idx + 1) % descs.length);
-		}, 2000);
-		return () => {
-			clearTimeout(t);
-		};
-	}, [idx]);
-	const transitions = useTransition(idx, (p) => p, {
-		from: { opacity: 0, marginLeft: '30px' },
-		enter: { opacity: 1, marginLeft: '0px' },
-		leave: { opacity: 0, marginLeft: '-100px' },
-		config: { duration: 300 },
-	});
-
-	if (!hasMounted) return '';
-
-	if (noAnime) {
-		return <span className={styles.descLong}>{descs.join(', ')}</span>;
-	} else {
-		return (
-			<span className={styles.descShort}>
-				{transitions.map(({ item, props, key }) => {
-					const Desc = animatedDescs[item];
-					return <Desc key={key} style={props} />;
-				})}
-			</span>
-		);
-	}
-}
-const animatedDescs = descs.map((desc, i) => ({ style }) => (
-	<animated.span style={style} key={i}>
-		{desc}
-	</animated.span>
-));
-
-// 	const transitions = useTransition(idx, (p) => p, {
-// 			from: { opacity: 0, marginLeft: "30px" },
-// 			enter: { opacity: 1, marginLeft: "0px" },
-// 			leave: { opacity: 0, marginLeft: "-100px" },
-// 			config: { duration: 300 },
-// 	});
-// 					{transitions.map(({ item, props, key }) => {
-// 							const Desc = descriptions[item];
-// 							return <Desc key={key} style={props} />;
-// 					})}
 
 function useHasMounted() {
 	const [hasMounted, setHasMounted] = useState(false);
