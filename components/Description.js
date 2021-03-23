@@ -1,42 +1,51 @@
-import { useEffect, useState } from "react";
-import { useTransition, animated } from "react-spring";
+import { useState, useEffect } from 'react';
+import { useTransition, animated } from 'react-spring';
 
-const descriptions = [
-    ({ style }) => (
-        <animated.span style={style}>JavaScript developer</animated.span>
-    ),
-    ({ style }) => <animated.span style={style}>Guitarist</animated.span>,
-    ({ style }) => (
-        <animated.span style={style}>Motorcycle rider</animated.span>
-    ),
-    ({ style }) => <animated.span style={style}>Cat-Person</animated.span>,
+import styles from '../styles/Header.module.css';
+
+const descs = [
+	'JavaScript Developer',
+	'Cat-Person',
+	'Guitarist',
+	'So Much More',
 ];
 
-export function Description() {
-    const [idx, setIdx] = useState(0);
+export default function Description({ hasMounted, noAnime }) {
+	const [idx, setIdx] = useState(0);
 
-    const transitions = useTransition(idx, (p) => p, {
-        from: { opacity: 0, marginLeft: "30px" },
-        enter: { opacity: 1, marginLeft: "0px" },
-        leave: { opacity: 0, marginLeft: "-100px" },
-        config: { duration: 300 },
-    });
+	useEffect(() => {
+		let t = setTimeout(() => {
+			setIdx((idx + 1) % descs.length);
+		}, 5000);
+		return () => {
+			clearTimeout(t);
+		};
+	}, [idx]);
+	const transitions = useTransition(idx, (p) => p, {
+		from: { opacity: 0, position: 'absolute', zIndex: '1', top: '-10px' },
+		enter: { opacity: 1, position: 'absolute', zIndex: '2', top: '65px' },
+		leave: { opacity: 0, position: 'absolute', zIndex: '3', top: '150px' },
+		config: { duration: 500 },
+	});
 
-    useEffect(() => {
-        const t = setTimeout(() => {
-            setIdx((idx + 1) % descriptions.length);
-        }, 6000);
+	if (!hasMounted) return '';
 
-        return () => {
-            clearTimeout(t);
-        };
-    }, [idx]);
-    return (
-        <p>
-            {transitions.map(({ item, props, key }) => {
-                const Desc = descriptions[item];
-                return <Desc key={key} style={props} />;
-            })}
-        </p>
-    );
+	if (noAnime) {
+		return <span className={styles.descLong}>{descs.join(', ')}</span>;
+	} else {
+		return (
+			<div className={styles.descShort}>
+				{transitions.map(({ item, props, key }) => {
+					const Desc = animatedDescs[item];
+					return <Desc key={key} style={props} />;
+				})}
+			</div>
+		);
+	}
 }
+const animatedDescs = descs.map((desc, i) => ({ style }) => (
+	<animated.div style={style} key={i}>
+		{desc}
+	</animated.div>
+));
+

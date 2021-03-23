@@ -1,19 +1,24 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import React from 'react';
+import useSWR from 'swr';
+import Header from '../components/Header';
+import styles from '../styles/Home.module.css';
 
-import { Description } from "../components/Description";
-import { Sections } from "../components/Sections";
+import { fetcher } from '../utils';
 
 export default function Home() {
-    return (
-        <div className={styles.container}>
-            <header>
-                <h1>
-                    Mike <span className={styles.lastname}>Curry</span>
-                </h1>
-                <Description />
-            </header>
-            <Sections />
-        </div>
-    );
+	const { data, error } = useSWR('/api/blog', fetcher);
+	console.log(data);
+	if (error) return <div>Error!</div>;
+	if (!data) return <div>loading...</div>;
+	return (
+		<>
+			<Head>
+				<title>Mike_Curry_dev</title>
+			</Head>
+			<main className={styles.main}>
+				<Header />
+			</main>
+		</>
+	);
 }
