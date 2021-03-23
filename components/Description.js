@@ -48,3 +48,4 @@ const animatedDescs = descs.map((desc, i) => ({ style }) => (
 		{desc}
 	</animated.div>
 ));
+
