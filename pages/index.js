@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import useSWR from 'swr';
 import Header from '../components/Header';
+import { Sections } from '../components/Sections';
 import styles from '../styles/Home.module.css';
 
 import { fetcher } from '../utils';
@@ -18,10 +19,7 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<Header />
-				<section>Blog Posts</section>
-				<section>Cat Pics</section>
-				<section>Work Exp</section>
-				<section>Code Samples</section>
+				<Sections  />
 			</main>
 		</>
 	);
