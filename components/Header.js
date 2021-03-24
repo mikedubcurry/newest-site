@@ -6,7 +6,7 @@ import styles from '../styles/Header.module.css';
 export default function Header() {
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
-
+console.log(reducedMotion);
 	return (
 		<header className={styles.header}>
 			<div className={styles.nametitle}>
@@ -25,7 +25,7 @@ function useHasMounted() {
 	return hasMounted;
 }
 
-const QUERY = '(prefers-reduced-motion: no-preference)';
+const QUERY = '(prefers-reduced-motion: reduce)';
 const isRenderingOnServer = typeof window === 'undefined';
 const getInitialState = () => {
 	return isRenderingOnServer ? true : !window.matchMedia(QUERY).matches;

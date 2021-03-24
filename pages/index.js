@@ -18,6 +18,10 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<Header />
+				<section>Blog Posts</section>
+				<section>Cat Pics</section>
+				<section>Work Exp</section>
+				<section>Code Samples</section>
 			</main>
 		</>
 	);
