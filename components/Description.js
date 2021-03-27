@@ -24,7 +24,7 @@ export default function Description({ hasMounted, noAnime }) {
 	const transitions = useTransition(idx, (p) => p, {
 		from: { opacity: 0, position: 'absolute', zIndex: '1', top: '-10px' },
 		enter: { opacity: 1, position: 'absolute', zIndex: '2', top: '65px' },
-		leave: { opacity: 0, position: 'absolute', zIndex: '3', top: '150px' },
+		leave: { opacity: 0, position: 'absolute', zIndex: '3', top: '100px' },
 		config: { duration: 500 },
 	});
 

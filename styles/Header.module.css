@@ -1,5 +1,5 @@
 .header {
-	height: 20vh;
+	height: 15vh;
 	padding: 1.4rem 2.4rem;
 	overflow: hidden;
 	background-color: papayawhip;
@@ -12,7 +12,6 @@
 	font-weight: 700;
 	margin-bottom: .8rem;
 	display: flex;
-	/* align-items: center; */
 	justify-content: center;
 	flex-direction: column;
 }
@@ -27,11 +26,11 @@
 	grid-column: 2;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 .descShort {
 	/* yes animation, short text styles */
 	font-size: 1.8rem;
-	/* line-height: 1.2rem; */
 }
 
 .descShort > * {
@@ -40,11 +39,13 @@
 
 @media screen and (min-width: 500px) {
 	.header {
-		display: block;
+		display: flex;
+		flex-direction: column;
 		height: 15vh;
 	}
 	.nametitle {
 		display: unset;
+		text-align: center;
 	}
 	.lastname {
 		display: inline;
