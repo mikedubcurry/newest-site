@@ -13,8 +13,8 @@ export default function BlogPosts() {
 		<main>
 			<div>all blog posts</div>
 			<ul>
-				{data.posts.map((post) => (
-					<li>{post.data.title}</li>
+				{data.posts.map((post, i) => (
+					<li key={i}>{post.data.title}</li>
 				))}
 			</ul>
 		</main>

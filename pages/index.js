@@ -19,7 +19,7 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<Header />
-				<Sections  />
+				<Sections data={data} />
 			</main>
 		</>
 	);

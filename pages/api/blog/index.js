@@ -5,15 +5,20 @@ const gray = require('gray-matter');
 const blogPath = './posts/';
 
 export default function handler(req, res) {
+	const posts = readAndParse(blogPath);
+	res.status(200).json({ posts });
+}
+
+function readAndParse(path) {
 	// get all posts from directory
-	const posts = fs.readdirSync(blogPath).map((file) => {
+	const posts = fs.readdirSync(path).map((file) => {
 		// map contents of each post
-		const rawFile = fs.readFileSync(blogPath + file, 'utf-8');
+		const rawFile = fs.readFileSync(path + file, 'utf-8');
 		// parse frontmatter
 		const gr = gray(rawFile);
 		// set contents to __html prop
 		const post = md.render(gr.content);
-		return { data: gr.data };
+		return { data: gr.data, post };
 	});
-	res.status(200).json({ posts });
+	return posts
 }
