@@ -1,0 +1,7 @@
+.blog-card {
+  list-style: none;
+  padding: 1rem;
+  margin: .5rem 1rem;
+  background-color: #ff33ff;
+  border-radius: 2rem;
+}

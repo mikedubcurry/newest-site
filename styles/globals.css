@@ -18,6 +18,6 @@ html {
 	font-size: 62.5%;
 }
 
-:root {
-	--section-height: 50px;
+section:focus {
+	outline: white 2px solid;
 }

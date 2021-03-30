@@ -12,16 +12,15 @@
 	padding-bottom: 9000px;
 }
 
-
 .first > h2,
 .second > h2,
 .third > h2,
 .fourth > h2 {
 	cursor: pointer;
-  padding: 1rem;
+	padding: 1rem;
 	position: relative;
 	z-index: 900;
-	
+	font-size: 2.5rem;
 }
 
 .second {
@@ -29,8 +28,8 @@
 	border-radius: 20px 20px 0 0;
 	position: relative;
 	z-index: 20;
-	 height: 100%;
-/*	top: -50px; */
+	height: 100%;
+	/*	top: -50px; */
 }
 
 .third {
@@ -38,17 +37,20 @@
 	border-radius: 20px 20px 0 0;
 	z-index: 30;
 	height: 100%;
-	 position: relative;
-/*	top: -100px; */
+	position: relative;
+	color: #ddd;
+	/*	top: -100px; */
 }
 
 .fourth {
-	background-color: #bb0073;
+	background-color: #cb5cff;
 	border-radius: 20px 20px 0 0;
 	z-index: 40;
 	height: 100%;
-	 position: relative;
-/*	top: -150px; */
+	position: relative;
+	color: #363636;
+
+	/*	top: -150px; */
 }
 
 /* .sectionWrapper {

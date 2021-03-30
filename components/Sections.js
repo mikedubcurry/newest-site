@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import Link from 'next/link';
 
+import BlogCard from './BlogCard';
 import { useHasMounted, usePrefersReducedMotion } from '../hooks';
-
 import styles from '../styles/Sections.module.css';
 
 export function Sections({ data }) {
@@ -95,19 +94,8 @@ export function Sections({ data }) {
 				>
 					Blog Posts
 				</h2>
-				<div>section</div>
 				<ul>
-					{posts &&
-						posts.map((post, i) => (
-							<li key={i}>
-								<Link href={`/blog/${post.slug}`}>
-									<a>
-										<h3>{post.title}</h3>
-										<p>{post.summary}</p>
-									</a>
-								</Link>
-							</li>
-						))}
+					{posts && posts.map((post, i) => <BlogCard post={post} key={i} />)}
 				</ul>
 			</Section>
 		</>
