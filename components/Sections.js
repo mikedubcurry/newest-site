@@ -114,7 +114,7 @@ export function Sections({ data }) {
 	);
 }
 
-function Section({ children, className, anime, selected }) {
+function Section({ children, className, noAnime, selected }) {
 	const [vh, setVh] = useState(0);
 	useEffect(() => {
 		setVh(window.innerHeight - window.innerHeight * 0.1);
@@ -124,7 +124,7 @@ function Section({ children, className, anime, selected }) {
 		// from: { height: anime ? '80px' : `${vh * 0.75}px` },
 		from: { height: '50px' },
 		to: { height: selected ? `${vh - 180}px` : '50px' },
-		immediate: anime,
+		immediate: noAnime,
 	});
 
 	return (
