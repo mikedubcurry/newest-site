@@ -10,113 +10,130 @@ export function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
-	const posts = data && data.posts.map(({ data }) => ({
-		title: data.title,
-		date: data.date,
-		slug: data.slug,
-		summary: data.summary,
-	}));
+	const posts =
+		data &&
+		data.posts.map(({ data }) => ({
+			title: data.title,
+			date: data.date,
+			slug: data.slug,
+			summary: data.summary,
+		}));
 	return (
 		<>
-			<ExpandableSection
+			<Section
+				className="first"
 				hasMounted={hasMounted}
 				noAnime={reducedMotion}
 				selected={selected === 0}
 			>
-				<section className={styles.first} onClick={() => setSelected(0)}>
-					<h2
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								setSelected(0);
-							}
-						}}
-						tabIndex="1"
-					>
-						Work Experience
-					</h2>
-				</section>
-			</ExpandableSection>
-			<ExpandableSection
+				{/* <section className={styles.first} onFocus={() => setSelected(0)}> */}
+				<h2
+					onClick={() => setSelected(0)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							setSelected(0);
+						}
+					}}
+					tabIndex="1"
+				>
+					Work Experience
+				</h2>
+				<div>section</div>
+			</Section>
+			<Section
+				className="second"
 				hasMounted={hasMounted}
 				noAnime={reducedMotion}
 				selected={selected === 1}
 			>
-				<section onClick={() => setSelected(1)} className={styles.second}>
-					<h2
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								setSelected(1);
-							}
-						}}
-						tabIndex="2"
-					>
-						Code Samples
-					</h2>
-				</section>
-			</ExpandableSection>
-			<ExpandableSection
+				<h2
+					onClick={() => setSelected(1)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							setSelected(1);
+						}
+					}}
+					tabIndex="2"
+				>
+					Code Samples
+				</h2>
+				<div>section</div>
+			</Section>
+			<Section
+				className="third"
 				hasMounted={hasMounted}
 				noAnime={reducedMotion}
 				selected={selected === 2}
 			>
-				<section onClick={() => setSelected(2)} className={styles.third}>
-					<h2
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								setSelected(2);
-							}
-						}}
-						tabIndex="3"
-					>
-						Cat Pictures
-					</h2>
-				</section>
-			</ExpandableSection>
-			<ExpandableSection
+				<h2
+					onClick={() => setSelected(2)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							setSelected(2);
+						}
+					}}
+					tabIndex="3"
+				>
+					Cat Pictures
+				</h2>
+				<div>section</div>
+			</Section>
+			<Section
+				className="fourth"
 				hasMounted={hasMounted}
 				noAnime={reducedMotion}
 				selected={selected === 3}
 			>
-				<section onClick={() => setSelected(3)} className={styles.fourth}>
-					<h2
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								setSelected(3);
-							}
-						}}
-						tabIndex="4"
-					>
-						Blog Posts
-					</h2>
-					<ul>
-						{posts &&
-							posts.map((post, i) => (
-								<li key={i}>
-									<Link href={`/blog/${post.slug}`}>
-										<a>
-											<h3>{post.title}</h3>
-											<p>{post.summary}</p>
-										</a>
-									</Link>
-								</li>
-							))}
-					</ul>
-				</section>
-			</ExpandableSection>
+				<h2
+					onClick={() => setSelected(3)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							setSelected(3);
+						}
+					}}
+					tabIndex="4"
+				>
+					Blog Posts
+				</h2>
+				<div>section</div>
+				<ul>
+					{posts &&
+						posts.map((post, i) => (
+							<li key={i}>
+								<Link href={`/blog/${post.slug}`}>
+									<a>
+										<h3>{post.title}</h3>
+										<p>{post.summary}</p>
+									</a>
+								</Link>
+							</li>
+						))}
+				</ul>
+			</Section>
 		</>
 	);
 }
 
-function ExpandableSection({ selected, children, hasMounted, noAnime }) {
+function Section({ children, className, anime, selected }) {
 	const [vh, setVh] = useState(0);
 	useEffect(() => {
-		setVh(window.innerHeight);
+		setVh(window.innerHeight - window.innerHeight * 0.1);
+	}, []);
+	console.log(vh);
+	const props = useSpring({
+		// from: { height: anime ? '80px' : `${vh * 0.75}px` },
+		from: { height: '50px' },
+		to: { height: selected ? `${vh - 180}px` : '50px' },
+		immediate: anime,
 	});
 
-	const props = useSpring({
-		from: { height: '80px' },
-		to: { height: selected ? `${vh * 0.8}px` : '80px' },
-		immediate: noAnime,
-	});
-	return <animated.div style={props}>{children}</animated.div>;
+	return (
+		<animated.section style={props} className={styles.section}>
+			{/* {children[0]} */}
+			<div className={styles[className]}>
+				{children[0]}
+				<div>{selected && children.slice(1)}</div>
+			</div>
+		</animated.section>
+	);
 }

@@ -1,15 +1,26 @@
 .first {
 	background-color: #bb0;
 	border-radius: 20px 20px 0 0;
-	z-index: 10;
+	/* z-index: 10; */
 	height: 100%;
+	position: relative;
 }
+.first,
+.second,
+.third,
+.fourth {
+	padding-bottom: 9000px;
+}
+
 
 .first > h2,
 .second > h2,
 .third > h2,
 .fourth > h2 {
   padding: 1rem;
+	position: relative;
+	z-index: 900;
+	
 }
 
 .second {
@@ -17,8 +28,8 @@
 	border-radius: 20px 20px 0 0;
 	position: relative;
 	z-index: 20;
-	height: 100%;
-	top: -50px;
+	 height: 100%;
+/*	top: -50px; */
 }
 
 .third {
@@ -26,8 +37,8 @@
 	border-radius: 20px 20px 0 0;
 	z-index: 30;
 	height: 100%;
-	position: relative;
-	top: -100px;
+	 position: relative;
+/*	top: -100px; */
 }
 
 .fourth {
@@ -35,6 +46,10 @@
 	border-radius: 20px 20px 0 0;
 	z-index: 40;
 	height: 100%;
-	position: relative;
-	top: -150px;
+	 position: relative;
+/*	top: -150px; */
 }
+
+/* .sectionWrapper {
+	
+} */
