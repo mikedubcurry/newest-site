@@ -4,13 +4,12 @@ import { useSpring, animated } from 'react-spring';
 import BlogCard from './BlogCard';
 import { useHasMounted, usePrefersReducedMotion } from '../hooks';
 import styles from '../styles/Sections.module.css';
-import { BlogSection } from './';
+import { BlogSection, SampleSection } from './';
 
 export default function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
-	console.log(data);
 	const samples =
 		data.samples &&
 		data.samples.samples.map((sam) => ({
@@ -19,7 +18,6 @@ export default function Sections({ data }) {
 			summary: sam.data.summary,
 			samp: sam.sample,
 		}));
-	// console.log(samples);
 	const posts =
 		data &&
 		data.posts.posts.map(({ data }) => ({
@@ -66,9 +64,7 @@ export default function Sections({ data }) {
 				>
 					Code Samples
 				</h2>
-				<ul className={styles['code-section']}>
-					{samples && samples.map((samp, i) => <li key={i}>{samp.title}</li>)}
-				</ul>
+				<SampleSection samples={samples} />
 			</Section>
 			<Section
 				className="third"
