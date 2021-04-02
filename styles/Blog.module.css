@@ -1,7 +1,16 @@
 .blog-card {
-  list-style: none;
-  padding: 1rem;
-  margin: .5rem 1rem;
-  background-color: #ff33ff;
-  border-radius: 2rem;
+	font-size: 1.4rem;
+	list-style: none;
+	padding: 1rem;
+	margin: 0.5rem 1rem;
+	background-color: #ff33ff;
+	border-radius: 2rem;
+	margin-bottom: 1.4rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+	.blog-card {
+		width: 50vw;
+	}
 }

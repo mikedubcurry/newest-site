@@ -1,3 +1,12 @@
+.blog-section,
+.code-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 1rem;
+}
+
 .first {
 	background-color: #bb0;
 	border-radius: 20px 20px 0 0;
@@ -43,7 +52,7 @@
 }
 
 .fourth {
-	background-color: #cb5cff;
+	background-color: #da89ff;
 	border-radius: 20px 20px 0 0;
 	z-index: 40;
 	height: 100%;

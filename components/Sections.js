@@ -4,16 +4,26 @@ import { useSpring, animated } from 'react-spring';
 import BlogCard from './BlogCard';
 import { useHasMounted, usePrefersReducedMotion } from '../hooks';
 import styles from '../styles/Sections.module.css';
+import { BlogSection } from './';
 
-export function Sections({ data }) {
+export default function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
+	console.log(data);
+	const samples =
+		data.samples &&
+		data.samples.samples.map((sam) => ({
+			title: sam.data.title,
+			slug: sam.data.slug,
+			summary: sam.data.summary,
+			samp: sam.sample,
+		}));
+	// console.log(samples);
 	const posts =
 		data &&
-		data.posts.map(({ data }) => ({
+		data.posts.posts.map(({ data }) => ({
 			title: data.title,
-			date: data.date,
 			slug: data.slug,
 			summary: data.summary,
 		}));
@@ -56,7 +66,9 @@ export function Sections({ data }) {
 				>
 					Code Samples
 				</h2>
-				<div>section</div>
+				<ul className={styles['code-section']}>
+					{samples && samples.map((samp, i) => <li key={i}>{samp.title}</li>)}
+				</ul>
 			</Section>
 			<Section
 				className="third"
@@ -94,30 +106,28 @@ export function Sections({ data }) {
 				>
 					Blog Posts
 				</h2>
-				<ul>
-					{posts && posts.map((post, i) => <BlogCard post={post} key={i} />)}
-				</ul>
+				<BlogSection posts={posts} />
 			</Section>
 		</>
 	);
 }
 
-function Section({ children, className, noAnime, selected }) {
+function Section({ children, className, noAnime, hasMounted, selected }) {
 	const [vh, setVh] = useState(0);
 	useEffect(() => {
 		setVh(window.innerHeight - window.innerHeight * 0.1);
 	}, []);
-	console.log(vh);
 	const props = useSpring({
 		// from: { height: anime ? '80px' : `${vh * 0.75}px` },
 		from: { height: '50px' },
 		to: { height: selected ? `${vh - 180}px` : '50px' },
-		immediate: noAnime,
+		immediate: hasMounted && noAnime,
 	});
+
+	// TODO: animate children appearing
 
 	return (
 		<animated.section style={props} className={styles.section}>
-			{/* {children[0]} */}
 			<div className={styles[className]}>
 				{children[0]}
 				<div>{selected && children.slice(1)}</div>
