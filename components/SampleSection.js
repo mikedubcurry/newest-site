@@ -1,5 +1,5 @@
 import { SampleCard } from './';
-import styles from '../styles/Sections.module.css'
+import styles from '../styles/Sections.module.css';
 
 export default function SampleSection({ samples }) {
 	return (

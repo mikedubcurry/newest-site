@@ -27,3 +27,8 @@ export function usePosts() {
 	});
 	return posts;
 }
+
+export function usePost(slug) {
+	const posts = usePosts();
+	return posts.filter(({ data }) => data.slug === slug)[0];
+}
