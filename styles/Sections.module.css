@@ -1,8 +1,17 @@
+.Button {
+	background-color: powderblue;
+	padding: 1.2rem;
+	border: none;
+	border-radius: 1.4rem;
+	
+}
+
 .blog-section,
 .code-section {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	height: 100%;
+	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
 }

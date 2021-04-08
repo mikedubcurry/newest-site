@@ -1,6 +1,7 @@
 const fs = require('fs');
 const md = require('markdown-it')({ html: true });
 const gray = require('gray-matter');
+const { useMarkdownFiles, FileReader } = require('use-md');
 
 export function useSamples() {
 	const samplePath = './samples/';
@@ -15,20 +16,32 @@ export function useSamples() {
 
 export function usePosts() {
 	const blogPath = './posts/';
-	// get all posts from directory
-	const posts = fs.readdirSync(blogPath).map((file) => {
-		// map contents of each post
-		const rawFile = fs.readFileSync(blogPath + file, 'utf-8');
-		// parse frontmatter
-		const gr = gray(rawFile);
-		// set contents to __html prop
-		const post = md.render(gr.content);
-		return { data: gr.data, post };
+	useMarkdownFiles(blogPath, { html: true }).then((files) => {
+		// console.log(files);
+		return files.map((post) => {
+			return {
+				data: post.frontmatter,
+				post: post.content,
+			};
+		});
 	});
-	return posts;
+	// // get all posts from directory
+	// const posts = fs.readdirSync(blogPath).map((file) => {
+	// 	// map contents of each post
+	// 	const rawFile = fs.readFileSync(blogPath + file, 'utf-8');
+	// 	// parse frontmatter
+	// 	const gr = gray(rawFile);
+	// 	// set contents to __html prop
+	// 	const post = md.render(gr.content);
+	// 	return { data: gr.data, post };
+	// });
+	// return posts;
 }
 
-export function usePost(slug) {
-	const posts = usePosts();
-	return posts.filter(({ data }) => data.slug === slug)[0];
+export async function usePost(slug) {
+	const fr = new FileReader('./posts');
+	const post = await fr.getMDownFile('0.md', { html: true });
+	// console.log(post);
+	return post;
+	// .filter(({ data }) => data.slug === slug)[0];
 }

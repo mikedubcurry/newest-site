@@ -9,8 +9,8 @@ import { fetcher } from '../utils';
 
 export default function Home() {
 	const { data: posts } = useSWR('/api/blog', fetcher);
-	const { data: samples } = useSWR('/api/samples');
-console.log(samples);
+	const { data: samples } = useSWR('/api/samples', fetcher);
+console.log(posts);
 	if (!posts) return <div>loading...</div>;
 	return (
 		<>

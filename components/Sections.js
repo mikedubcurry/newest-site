@@ -10,6 +10,7 @@ export default function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
+	console.log(data);
 	const samples =
 		data.samples &&
 		data.samples.samples.map((sam) => ({
@@ -20,10 +21,11 @@ export default function Sections({ data }) {
 		}));
 	const posts =
 		data &&
-		data.posts.posts.map(({ data }) => ({
-			title: data.title,
-			slug: data.slug,
-			summary: data.summary,
+		data.posts.posts.map((file) => ({
+			title: file.frontmatter.title,
+			content: file.content,
+			slug: file.frontmatter.slug,
+			summary: file.frontmatter.summary,
 		}));
 	return (
 		<>
@@ -126,7 +128,7 @@ function Section({ children, className, noAnime, hasMounted, selected }) {
 		<animated.section style={props} className={styles.section}>
 			<div className={styles[className]}>
 				{children[0]}
-				<div>{selected && children.slice(1)}</div>
+				<div style={{ height: '50vh' }}>{selected && children.slice(1)}</div>
 			</div>
 		</animated.section>
 	);
