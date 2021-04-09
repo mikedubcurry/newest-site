@@ -5,32 +5,16 @@ import { BlogCard } from './';
 // only show 3 posts at a time for small screens.
 
 export default function BlogSection({ posts }) {
-	const chunkLength = 3;
-	const [chunk, setChunck] = useState(0);
-	const handleNext = () => {
-		if (chunk + chunkLength > posts.length) {
-			setChunck(0);
-		} else {
-			setChunck(chunk + chunkLength);
-		}
-	};
-	const handlePrev = () => {
-		if (chunk - chunkLength < 0) {
-			setChunck(posts.length - (posts.length % chunkLength));
-		} else {
-			setChunck(chunk - chunkLength);
-		}
-	};
+	const [handleNext, handlePrev, postSlice] = usePagination(posts);
+	
 	return (
 		<ul className={styles['blog-section']}>
-			<nav>
+			<nav className={styles.switcher}>
 				<Button action={handlePrev} text="Prev" />
 				<Button action={handleNext} text="Next" />
 			</nav>
-			{posts &&
-				posts
-					.slice(chunk, chunk + chunkLength)
-					.map((post, i) => <BlogCard post={post} key={i} i={i} />)}
+			{postSlice &&
+				postSlice.map((post, i) => <BlogCard post={post} key={i} i={i} />)}
 		</ul>
 	);
 }
@@ -58,4 +42,27 @@ function Button({ action, text }) {
 			{text}
 		</button>
 	);
+}
+
+function usePagination(dataArray, options) {
+	const len = dataArray.length;
+	let chunkLength = options ? options.chunkLength : undefined;
+	if (!chunkLength) chunkLength = 3;
+	const [chunk, setChunck] = useState(0);
+	const handleNext = () => {
+		if (chunk + chunkLength > len) {
+			setChunck(0);
+		} else {
+			setChunck(chunk + chunkLength);
+		}
+	};
+	const handlePrev = () => {
+		if (chunk - chunkLength < 0) {
+			setChunck(len - (len % chunkLength));
+		} else {
+			setChunck(chunk - chunkLength);
+		}
+	};
+	const slice = dataArray.slice(chunk, chunk + chunkLength);
+	return [handleNext, handlePrev, slice];
 }
