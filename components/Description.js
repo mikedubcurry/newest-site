@@ -10,7 +10,7 @@ const descs = [
 	'So Much More',
 ];
 
-export default function Description({ hasMounted, noAnime }) {
+export function Description({ hasMounted, noAnime }) {
 	const [idx, setIdx] = useState(0);
 
 	useEffect(() => {
@@ -48,4 +48,3 @@ const animatedDescs = descs.map((desc, i) => ({ style }) => (
 		{desc}
 	</animated.div>
 ));
-

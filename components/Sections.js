@@ -4,9 +4,9 @@ import { useSpring, animated } from 'react-spring';
 import BlogCard from './BlogCard';
 import { useHasMounted, usePrefersReducedMotion } from '../hooks';
 import styles from '../styles/Sections.module.css';
-import { BlogSection, SampleSection } from './';
+import { BlogSection, SampleSection, CatPicSection } from './';
 
-export default function Sections({ data }) {
+export function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
@@ -85,7 +85,7 @@ export default function Sections({ data }) {
 				>
 					Cat Pictures
 				</h2>
-				<div>section</div>
+				<CatPicSection />
 			</Section>
 			<Section
 				className="fourth"

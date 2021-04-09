@@ -1,4 +1,4 @@
-export default function SampleCard({ sample }) {
+export function SampleCard({ sample }) {
 	return (
 		<li>
 			<header>{sample.title}</header>

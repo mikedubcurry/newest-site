@@ -1,8 +1,8 @@
-import Description from './Description';
+import { Description } from './';
 import { useHasMounted, usePrefersReducedMotion } from '../hooks';
 import styles from '../styles/Header.module.css';
 
-export default function Header() {
+export function Header() {
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
 

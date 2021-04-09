@@ -10,7 +10,7 @@
 	width: 100%;
 }
 .blog-section,
-.code-section {
+.sample-section {
 	width: 100%;
 	display: flex;
 	flex-direction: column;

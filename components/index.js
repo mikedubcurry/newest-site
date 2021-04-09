@@ -1,17 +1,9 @@
-import BlogSection from './BlogSection';
-import BlogCard from './BlogCard';
-import Header from './Header';
-import Sections from './Sections';
-import Desctiption from './Description';
-import SampleCard from './SampleCard';
-import SampleSection from './SampleSection';
-
-export {
-	BlogCard,
-	BlogSection,
-	Header,
-	Sections,
-	SampleSection,
-	SampleCard,
-	Desctiption,
-};
+export { Header } from './Header';
+export { BlogSection } from './BlogSection';
+export { Sections } from './Sections';
+export { Description } from './Description';
+export { SampleCard } from './SampleCard';
+export { BlogCard } from './BlogCard';
+export { Button } from './Button';
+export { CatPicSection } from './CatPicSection';
+export { SampleSection } from './SampleSection';
