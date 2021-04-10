@@ -10,7 +10,8 @@
 	width: 100%;
 }
 .blog-section,
-.sample-section {
+.sample-section,
+.cat-pic-section {
 	width: 100%;
 	display: flex;
 	flex-direction: column;

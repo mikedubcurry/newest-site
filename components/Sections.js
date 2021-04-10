@@ -10,7 +10,7 @@ export function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
 	const hasMounted = useHasMounted();
 	const reducedMotion = usePrefersReducedMotion();
-	console.log(data);
+
 	const samples =
 		data.samples &&
 		data.samples.samples.map((sam) => ({
