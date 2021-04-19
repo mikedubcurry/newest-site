@@ -1,8 +1,8 @@
-export function SampleCard({ sample }) {
+export function SampleCard({ content }) {
 	return (
 		<li>
-			<header>{sample.title}</header>
-			<p>{sample.summary}</p>
+			<header>{content.title}</header>
+			<p>{content.summary}</p>
 		</li>
 	);
 }

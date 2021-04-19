@@ -7,3 +7,4 @@ export { BlogCard } from './BlogCard';
 export { Button } from './Button';
 export { CatPicSection } from './CatPicSection';
 export { SampleSection } from './SampleSection';
+export { Switcher } from './Switcher';
