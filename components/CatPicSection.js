@@ -1,14 +1,14 @@
-import image from 'next/image';
 import Image from 'next/image';
 import styles from '../styles/Sections.module.css';
+import { Switcher } from './Switcher';
 
 export function CatPicSection() {
 	return (
 		<section className={styles['cat-pic-section']}>
-			<ImageGrid images={images} />
 		</section>
 	);
 }
+
 
 function ImageGrid({ images }) {
 	return (

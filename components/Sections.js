@@ -45,7 +45,7 @@ export function Sections({ data }) {
 					}}
 					tabIndex="1"
 				>
-					Work Experience
+					About Me
 				</h2>
 				<div>section</div>
 			</Section>
