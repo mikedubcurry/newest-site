@@ -7,10 +7,8 @@ export function CatPicSection() {
 	const [handleNext, handlePrev, imagesSlice] = usePagination(images, {
 		chunkLength: 2,
 	});
-	console.log(imagesSlice);
 	return (
 		<section className={styles['cat-pic-section']}>
-			{/* <Switcher  handleNext={handleNext} handlePrev={handlePrev} /> */}
 			<nav className={styles.switcher}>
 				<Button level={3} action={handlePrev} text="Prev" />
 				<Button level={3} action={handleNext} text="Next" />

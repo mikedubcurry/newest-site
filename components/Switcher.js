@@ -4,7 +4,6 @@ import styles from '../styles/Sections.module.css';
 
 export function Switcher({ items, Template, level }) {
 	const [handleNext, handlePrev, itemSlice] = usePagination(items);
-
 	return (
 		<>
 			<nav className={styles.switcher}>
