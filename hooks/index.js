@@ -46,12 +46,20 @@ export function usePagination(dataArray, options) {
 		}
 	};
 	const handlePrev = () => {
-		if (chunk - chunkLength <= 0) {
-			setChunck(len - (len % chunkLength));
+		if (chunk - chunkLength < 0) {
+			if (chunkLength % 2 === 0) {
+				setChunck(len - (len % chunkLength) - chunkLength);
+			} else {
+				setChunck(len - (len % chunkLength));
+			}
 		} else {
 			setChunck(chunk - chunkLength);
 		}
 	};
 	const slice = dataArray.slice(chunk, chunk + chunkLength);
+	console.log('chunk', chunk);
+	console.log('len', len);
+	console.log('chunkLength', chunkLength);
+
 	return [handleNext, handlePrev, slice];
 }
