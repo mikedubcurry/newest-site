@@ -39,19 +39,20 @@ export function usePagination(dataArray, options) {
 	if (!chunkLength) chunkLength = 3;
 	const [chunk, setChunck] = useState(0);
 	const handleNext = () => {
-		if (chunk + chunkLength > len) {
+		if (chunk + chunkLength >= len) {
 			setChunck(0);
 		} else {
 			setChunck(chunk + chunkLength);
 		}
 	};
 	const handlePrev = () => {
-		if (chunk - chunkLength < 0) {
+		if (chunk - chunkLength <= 0) {
 			setChunck(len - (len % chunkLength));
 		} else {
 			setChunck(chunk - chunkLength);
 		}
 	};
 	const slice = dataArray.slice(chunk, chunk + chunkLength);
+	console.log('chunk', chunk);
 	return [handleNext, handlePrev, slice];
 }
