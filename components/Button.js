@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from '../styles/Sections.module.css';
 
-export function Button({ action, text }) {
+export function Button({ action, text, level }) {
 	const [enabled, setEnabled] = useState(true);
 
 	useEffect(() => {
@@ -14,6 +14,7 @@ export function Button({ action, text }) {
 	});
 	return (
 		<button
+			tabIndex={level}
 			disabled={!enabled}
 			className={styles.Button}
 			onClick={() => {

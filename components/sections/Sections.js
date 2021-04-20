@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-import BlogCard from './BlogCard';
-import { useHasMounted, usePrefersReducedMotion } from '../hooks';
-import styles from '../styles/Sections.module.css';
-import { BlogSection, SampleSection, CatPicSection } from './';
+import BlogCard from '../BlogCard';
+import { useHasMounted, usePrefersReducedMotion } from '../../hooks';
+import styles from '../../styles/Sections.module.css';
+import { BlogSection, SampleSection, CatPicSection } from '../';
 
 export function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
@@ -66,7 +66,7 @@ export function Sections({ data }) {
 				>
 					Code Samples
 				</h2>
-				<SampleSection samples={samples} />
+				<SampleSection level={2} samples={samples} />
 			</Section>
 			<Section
 				className="third"

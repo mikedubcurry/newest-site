@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import styles from '../styles/Sections.module.css';
-import { Switcher } from './Switcher';
+import styles from '../../styles/Sections.module.css';
+import { Switcher } from '../Switcher';
 
 export function CatPicSection() {
 	return (
