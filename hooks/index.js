@@ -57,9 +57,5 @@ export function usePagination(dataArray, options) {
 		}
 	};
 	const slice = dataArray.slice(chunk, chunk + chunkLength);
-	console.log('chunk', chunk);
-	console.log('len', len);
-	console.log('chunkLength', chunkLength);
-
 	return [handleNext, handlePrev, slice];
 }
