@@ -18,7 +18,7 @@ export default function Home() {
 				<title>Mike_Curry_dev</title>
 			</Head>
 			<main className={styles.main}>
-				<Header />
+				{/* <Header /> */}
 				<Sections data={{ posts, samples }} />
 			</main>
 		</>

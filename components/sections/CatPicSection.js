@@ -13,23 +13,28 @@ export function CatPicSection() {
 				<Button level={3} action={handlePrev} text="Prev" />
 				<Button level={3} action={handleNext} text="Next" />
 			</nav>
-			{imagesSlice.map((image, i) => (
-				<Image
-					key={i}
-					src={image.src}
-					alt={image.alt}
-					width={image.width}
-					height={image.height}
-					// layout="fixed"
-				/>
-			))}
+			<figure className={styles.catpic}>
+				{imagesSlice.map((image, i) => (
+					<Image
+						key={i}
+						src={image.src}
+						alt={image.alt}
+						width={image.width}
+						height={image.height}
+						// layout="fixed"
+					/>
+				))}
+			</figure>
 			{/* STYLE THIS SECTION */}
-			<p>Their names are Hamilton (3 legs) and Humphrey (fluffy). </p>
-			<p>
-				You are allowed 6 pets to distribute as you see fit. One click = one pet
-			</p>
-			<p>Hamilton: 4,332 pets</p>
-			<p>Humphrey: 4,234 pets</p>
+			<figcaption>
+				<p>Their names are Hamilton (3 legs) and Humphrey (fluffy). </p>
+				<p>
+					You are allowed 6 pets to distribute as you see fit. One click = one
+					pet
+				</p>
+				<p>Hamilton: 4,332 pets</p>
+				<p>Humphrey: 4,234 pets</p>
+			</figcaption>
 		</section>
 	);
 }

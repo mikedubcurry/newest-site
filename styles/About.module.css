@@ -1,0 +1,21 @@
+.header {
+	font-size: 1.75rem;
+}
+
+.main {
+	background-color: #bb0;
+  min-height: 85vh;
+  padding: 1rem;
+}
+.page-title {
+  font-size: 2.75rem;
+}
+.subtitle {
+	font-size: 1.75rem;
+	align-self: flex-start;
+}
+.copy {
+	font-size: 1.75rem;
+	line-height: 1.7;
+	text-align: justify;
+}

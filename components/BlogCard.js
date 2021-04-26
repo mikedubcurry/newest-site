@@ -7,7 +7,7 @@ export function BlogCard({ content, i }) {
 		<li className={styles['blog-card']} key={i}>
 			<Link href={`/blog/${content.slug}`}>
 				<a>
-					<h3>{content.title}</h3>
+					<h3 className={styles.subtitle}>{content.title}</h3>
 					<p>{content.summary}</p>
 				</a>
 			</Link>

@@ -5,6 +5,7 @@ import BlogCard from '../BlogCard';
 import { useHasMounted, usePrefersReducedMotion } from '../../hooks';
 import styles from '../../styles/Sections.module.css';
 import { BlogSection, SampleSection, CatPicSection } from '../';
+import { AboutSection } from './AboutSection';
 
 export function Sections({ data }) {
 	const [selected, setSelected] = useState(0);
@@ -45,9 +46,9 @@ export function Sections({ data }) {
 					}}
 					tabIndex="1"
 				>
-					About Me
+					About
 				</h2>
-				<div>section</div>
+				<AboutSection />
 			</Section>
 			<Section
 				className="second"

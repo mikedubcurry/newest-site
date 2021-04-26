@@ -11,11 +11,12 @@
 }
 .blog-section,
 .sample-section,
-.cat-pic-section {
+.cat-pic-section,
+.about-section {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: 110%;
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
@@ -76,8 +77,52 @@
 	/*	top: -150px; */
 }
 
+.subtitle {
+	font-size: 1.75rem;
+	align-self: flex-start;
+}
+
+.copy {
+	font-size: 1.75rem;
+	line-height: 1.7;
+	text-align: justify;
+}
+.catpic {
+	border: 4px solid red;
+	border-radius: 34px;
+}
+
+
+.link {
+	text-decoration: underline;
+	font-size: 1.5rem;
+}
+
+
 @media screen and (min-width: 500px) {
 	.switcher {
 		width: 70vw;
+	}
+	.link {
+		text-decoration: unset;
+		position: relative;
+	}
+
+	.link:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: #000;
+		visibility: hidden;
+		transform: scaleX(0);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.link:hover:before {
+		visibility: visible;
+		transform: scaleX(1);
 	}
 }
