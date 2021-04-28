@@ -19,3 +19,8 @@
 	line-height: 1.7;
 	text-align: justify;
 }
+
+.aboutpage-section {
+	border: solid 1px red;
+	margin-block-end: 4rem;
+}
