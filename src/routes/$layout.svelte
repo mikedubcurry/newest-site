@@ -1,11 +1,21 @@
 <script lang="ts">
+	import {  browser } from '$app/env';
+
 	import Header from '../lib/Header/index.svelte';
 	import OtherLinks from '../lib/OtherLinks/index.svelte';
+	import NavLinks from '../lib/NavLinks/index.svelte';
 	import Footer from '../lib/Footer/index.svelte'
 	import '../app.css';
+let w: number
+	if(browser) {
+		console.log(window.innerWidth);
+		w = window.innerWidth
+	}
+	
 </script>
 
 <Header />
+<NavLinks />
 <main>
 	<slot />
 </main>

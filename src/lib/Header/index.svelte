@@ -1,58 +1,28 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	$: path = $page.path;
+	import NavLinks from '../NavLinks/index.svelte';
+		
 </script>
 
 <header>
 	<div class="name">Mike<span class="lastname">Curry</span></div>
-	<nav>
-		<ul>
-			<li class:active={path === '/'} class="linkitem">
-				<a sveltekit:prefetch href="/">Home</a>
-			</li>
-			<li class:active={path === '/about'} class="linkitem">
-				<a sveltekit:prefetch href="/about">About</a>
-			</li>
-			<li class:active={path === '/blog'} class="linkitem">
-				<a sveltekit:prefetch href="/blog">Blog</a>
-			</li>
-		</ul>
-	</nav>
 </header>
 
 <style>
-	/* a {
-		color: black;
-
-	} */
-	.name {
-		display: flex;
-		flex-direction: column;
-	}
 	header {
-		/* background: linear-gradient(var(--secondary-color), var(--primary-color)); */
 		position: fixed;
 		top: 0;
-		left: 0;
 	}
-	nav {
-		width: 10vw;
-	}
-	li {
-		margin-block-end: 3rem;
-	}
-	li.active a{
-		color: var(--accent-color);
-	}
-	ul {
+	.name {
+		margin-block-start: 1rem;
+		margin-inline-start: 1rem;
 		display: flex;
-		list-style: none;
-		justify-content: space-around;
 		flex-direction: column;
-		/* width: 50%; */
+		font-size: 2.5rem;
 	}
+
 	@media screen and (min-width: 500px) {
 		.name {
+			color: var(--text-color);
 			flex-direction: row;
 		}
 		.lastname {

@@ -20,16 +20,22 @@
 
 <style>
 	nav {
-		width: 10vw;
+		height: 35vh;
+		/* width: 10vw; */
     position: fixed;
-    top: 0;
+    top: 15vh;
     right: 0;
+		margin-inline-end: 1rem;
 	}
 	img {
 		width: 24px;
 	}
 	ul {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		list-style: none;
+		height: 100%;
 	}
 	li {
 		margin-block-end: 3rem;

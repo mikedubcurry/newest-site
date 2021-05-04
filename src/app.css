@@ -25,7 +25,10 @@ body {
 		var(--tertiary-color) 41.35%
 	); */
 }
-
+* {
+	margin: 0;
+	padding: 0;
+}
 body::before {
 	content: '';
 	width: 80vw;
