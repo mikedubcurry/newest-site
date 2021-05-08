@@ -30,35 +30,45 @@
 		if (!isX) {
 			$deltaX = 1;
 			$deltaY = 0;
+		} else {
+			$deltaX = 0;
+			$deltaY = 1;
 		}
 	}
 </script>
 
-<svg on:click={handleClick} width="25" height="25" xmlns="http://www.w3.org/2000/svg">
-	<line
-		x1="1"
-		x2="24"
-		y1="2"
-		y2={25 * $deltaY + ($deltaY < 0.5 ? 2 : -2)}
-		stroke="black"
-		stroke-width="4"
-	/>
-	<line x1="1" x2={23 * $deltaX + 1} y1="12" y2="12" stroke="black" stroke-width="4" />
-	<line
-		x1="1"
-		x2="24"
-		y1="23"
-		y2={25 * $deltaX + ($deltaX < 0.5 ? 3 : -2)}
-		stroke="black"
-		stroke-width="4"
-	/>
-</svg>
+<div on:click={handleClick}>
+	<svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+		<line
+			x1="1"
+			x2="24"
+			y1="2"
+			y2={25 * $deltaY + ($deltaY < 0.5 ? 2 : -2)}
+			stroke="black"
+			stroke-width="4"
+		/>
+		<line x1="1" x2={23 * $deltaX + 1} y1="12" y2="12" stroke="black" stroke-width="4" />
+		<line
+			x1="1"
+			x2="24"
+			y1="23"
+			y2={25 * $deltaX + ($deltaX < 0.5 ? 3 : -2)}
+			stroke="black"
+			stroke-width="4"
+		/>
+	</svg>
+</div>
 
 <style>
-	svg {
+	div {
 		position: fixed;
 		z-index: 25;
 		top: 2rem;
 		right: 2rem;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
