@@ -22,9 +22,10 @@
 	nav {
 		height: 35vh;
 		/* width: 10vw; */
-    position: fixed;
-    top: 15vh;
-    right: 0;
+		z-index: 15;
+		/* position: fixed; */
+		top: 15vh;
+		right: 0;
 		margin-inline-end: 1rem;
 	}
 	img {
