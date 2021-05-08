@@ -1,36 +1,36 @@
 <script lang="ts">
-  import {createEventDispatcher} from 'svelte'
+	import { createEventDispatcher } from 'svelte';
 	export let visible: boolean;
-  export let mobile: boolean
+	export let mobile: boolean;
 
-  const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 </script>
 
 <span class:visible class:mobile>
 	<slot name="nav-links" />
-  <span on:click={() => dispatch('menubtnchange')} class='spacer'></span>
+	<span on:click={() => dispatch('menubtnchange')} class="spacer" />
 	<slot name="other-links" />
 </span>
 
 <style>
-  span {
-    position: fixed;
-    top: 20vh;
-    left: -25% ;
-    transition: all .3s ease;
-    height: 50vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .mobile {
-    width: 150vw;
-  }
-  .visible {
-    left: 0;
-    width: 100vw;
-  }
-  .spacer {
-    justify-self: center;
-  }
+	span {
+		position: fixed;
+		top: 20vh;
+		left: -25%;
+		transition: all 0.3s ease;
+		height: 50vh;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.mobile {
+		width: 150vw;
+	}
+	.visible {
+		left: 0;
+		width: 100vw;
+	}
+	.spacer {
+		justify-self: center;
+	}
 </style>

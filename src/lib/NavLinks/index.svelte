@@ -31,7 +31,6 @@
 		width: 10vw;
 		margin-inline-start: 1rem;
 		z-index: 15;
-		/* position: fixed; */
 		top: 15vh;
 		left: 0;
 	}
@@ -50,7 +49,6 @@
 		justify-content: space-between;
 		flex-direction: column;
 		height: 100%;
-		/* width: 50%; */
 	}
 
 	@media screen and (min-width: 400px) {

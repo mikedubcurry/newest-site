@@ -9,10 +9,7 @@
 	import Footer from '../lib/Footer/index.svelte';
 	import '../app.css';
 	let w: number;
-	if (browser) {
-		console.log(window.innerWidth);
-		w = window.innerWidth;
-	}
+
 	function handleMenuBtnChange() {
 		mobileBtnClicked = !mobileBtnClicked;
 	}
@@ -20,13 +17,21 @@
 		mobileBtnClicked = false;
 	}
 	let mobileBtnClicked = false;
-	$: console.log(mobileBtnClicked);
+	$: {
+		if (browser) {
+			w = window.innerWidth;
+		}
+	}
 </script>
 
 {#if w < 600}
 	<MobileNav on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
 {/if}
-<MobileNavLinks mobile={w < 600} on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked || w > 600}>
+<MobileNavLinks
+	mobile={w < 600}
+	on:menubtnchange={resetMobileBtn}
+	visible={mobileBtnClicked || w > 600}
+>
 	<NavLinks on:menubtnchange={resetMobileBtn} slot="nav-links" />
 	<OtherLinks slot="other-links" />
 </MobileNavLinks>
@@ -36,17 +41,11 @@
 	<slot />
 </main>
 
-<!-- {:else}
-	<NavLinks />
-	<main on:click={resetMobileBtn}>
-		<slot />
-	</main>
-	<OtherLinks />
-	<Footer />
-{/if} -->
 <style>
 	main {
 		width: 100%;
 		box-sizing: border-box;
+	}
+	@media screen and (max-width: 600px) {
 	}
 </style>
