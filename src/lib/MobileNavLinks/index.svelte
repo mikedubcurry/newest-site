@@ -6,12 +6,14 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<span class='navLinks' class:visible class:mobile>
+<span class="navLinks" class:visible class:mobile>
 	<slot name="nav-links" />
-	<span on:click={() =>{
-		console.log('clicked');
-		
-		 dispatch('menubtnchange')}} class="spacer" />
+	<span
+		on:click={() => {
+			dispatch('menubtnchange');
+		}}
+		class="spacer"
+	/>
 	<slot name="other-links" />
 </span>
 
@@ -33,9 +35,10 @@
 		left: 0;
 		width: 100vw;
 	}
+
 	.spacer {
 		justify-self: center;
-		z-index: 10;
+		z-index: -10;
 		left: 0;
 		height: 100%;
 		width: 100%;

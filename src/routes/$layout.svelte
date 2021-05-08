@@ -37,7 +37,7 @@
 </MobileNavLinks>
 
 <Header />
-<main on:click={resetMobileBtn}>
+<main class:top={!mobileBtnClicked} on:click={resetMobileBtn}>
 	<slot />
 </main>
 
@@ -48,6 +48,10 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		margin-block-start: 10rem;
+	}
+	.top {
+		position: relative;
+		z-index: 100;
 	}
 	@media screen and (max-width: 600px) {
 		main {

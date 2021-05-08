@@ -15,11 +15,30 @@
 	</p>
 </section>
 
-<!-- <section>
-  <p></p>
-</section> -->
+<section>
+	<h1>Contact Me</h1>
+	<p>
+		Feel free to reach out and say "What's up", I'll do my best to get back to you in a timely
+		manner
+	</p>
+	<form class="contact">
+		<label for="name">Your name</label>
+		<input name="name" id="name" type="text" />
+		<label for="email">Your email</label>
+		<input type="text" name="email" id="email" />
+		<label for="message">Speak from your heart</label>
+		<textarea name="message" id="message" cols="30" rows="10" />
+	</form>
+</section>
+
 <style>
-  section {
-    /* width: 90vw; */
-  }
+	section {
+		/* width: 90vw; */
+    /* position: relative; */
+    /* z-index: 50; */
+	}
+
+	.contact {
+		max-height: 75vh;
+	}
 </style>
