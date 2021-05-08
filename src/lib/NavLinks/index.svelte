@@ -27,21 +27,26 @@
 
 <style>
 	nav {
-		height: 35vh;
+		max-height: 100%;
 		width: 10vw;
-		margin-inline-start: 1rem;
+		padding-inline-start: 1rem;
+		padding-inline-end: 1rem;
 		z-index: 15;
-		top: 15vh;
-		left: 0;
+		background-color: var(--tertiary-color-alpha);
+		border-radius: 0 3rem 3rem 0;
 	}
 	li {
 		margin-block-end: 3rem;
 	}
+
+	ul:first-child {
+		margin-block-start: 3rem;
+	}
 	a {
-		color: var(--text-color);
+		color: var(--text-color-light);
 	}
 	li.active a {
-		color: var(--accent-color);
+		color: var(--accent-color-light);
 	}
 	ul {
 		display: flex;
@@ -49,6 +54,7 @@
 		justify-content: space-between;
 		flex-direction: column;
 		height: 100%;
+		/* padding-block-end: 3rem; */
 	}
 
 	@media screen and (min-width: 400px) {

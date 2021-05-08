@@ -20,11 +20,13 @@
 
 <style>
 	nav {
-		height: 35vh;
+		max-height: 100%;
 		z-index: 15;
-		top: 15vh;
-		right: 0;
-		margin-inline-end: 1rem;
+		margin-inline-start: 1rem;
+		padding-inline-start: 1rem;
+		padding-inline-end: 1rem;
+		background-color: var(--tertiary-color-alpha);
+		border-radius: 3rem 0 0 3rem;
 	}
 	img {
 		width: 24px;
@@ -36,7 +38,17 @@
 		list-style: none;
 		height: 100%;
 	}
+
+	ul:first-child {
+		margin-block-start: 3rem;
+	}
 	li {
 		margin-block-end: 3rem;
+	}
+
+	@media screen and (min-width: 400px) {
+		nav {
+			width: 5vw;
+		}
 	}
 </style>

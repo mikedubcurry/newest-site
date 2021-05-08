@@ -1,6 +1,6 @@
+
 <script lang="ts">
 	import { browser } from '$app/env';
-
 	import Header from '../lib/Header/index.svelte';
 	import MobileNav from '../lib/MobileNav/index.svelte';
 	import MobileNavLinks from '../lib/MobileNavLinks/index.svelte';
@@ -45,7 +45,13 @@
 	main {
 		width: 100%;
 		box-sizing: border-box;
+		max-width: 1024px;
+		margin: 0 auto;
+		margin-block-start: 10rem;
 	}
 	@media screen and (max-width: 600px) {
+		main {
+			padding: 1rem;
+		}
 	}
 </style>
