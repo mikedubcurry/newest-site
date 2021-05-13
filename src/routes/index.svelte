@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { enhance } from '$lib/form';
+	let name: string;
+	let email: string;
+	let message: string;
 </script>
 
 <section>
@@ -21,21 +25,35 @@
 		Feel free to reach out and say "What's up", I'll do my best to get back to you in a timely
 		manner
 	</p>
-	<form class="contact">
+	<form
+		class="contact"
+		method="POST"
+		action="/contact"
+		use:enhance={{
+			result: async (res, form) => {
+				// const created = await res.text();
+				// console.log(await res.json());
+				
+
+				form.reset();
+			}
+		}}
+	>
 		<label for="name">Your name</label>
-		<input name="name" id="name" type="text" />
+		<input name="name" id="name" type="text" bind:value={name} />
 		<label for="email">Your email</label>
-		<input type="text" name="email" id="email" />
+		<input type="text" name="email" id="email" bind:value={email} />
 		<label for="message">Speak from your heart</label>
-		<textarea name="message" id="message" cols="30" rows="10" />
+		<textarea name="message" id="message" cols="30" rows="10" bind:value={message} />
+		<input type="submit" value="send it!" />
 	</form>
 </section>
 
 <style>
 	section {
 		/* width: 90vw; */
-    /* position: relative; */
-    /* z-index: 50; */
+		/* position: relative; */
+		/* z-index: 50; */
 	}
 
 	.contact {
