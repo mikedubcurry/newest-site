@@ -34,6 +34,7 @@
 		<input type="text" name="email" id="email" />
 		<label for="message">Message</label>
 		<textarea name="message" id="message"  />
+		<button>Send it!</button>
 	</form>
 </section>
 
