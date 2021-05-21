@@ -2,7 +2,7 @@
 	import { browser } from '$app/env';
 	import Footer from '../components/Footer.svelte';
 	import Header from '../components/Header.svelte';
-	import MobileNavBtn from '../components/mobile/MobileNavBtn.svelte'
+	import MobileNavBtn from '../components/mobile/MobileNavBtn.svelte';
 	import '../app.css';
 
 	let w: number;
@@ -35,6 +35,12 @@
 	main {
 		max-width: 1024px;
 		overflow-x: hidden;
-		margin-inline: 1rem;
+		margin: 0 auto;
+	}
+
+	@media screen and (max-width: 1075px) {
+		main {
+			margin-inline: 2rem;
+		}
 	}
 </style>

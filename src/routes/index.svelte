@@ -28,16 +28,62 @@
 		officiis quas ipsam? Vitae, quia eaque!
 	</p>
 	<form>
-		<label for="name">Name:</label>
-		<input type="text" name="name" id="name" />
-		<label for="email">Email</label>
-		<input type="text" name="email" id="email" />
-		<label for="message">Message</label>
-		<textarea name="message" id="message"  />
+		<label for="name"
+			>Name:
+			<input type="text" name="name" id="name" />
+		</label>
+		<label for="email"
+			>Email:
+			<input type="text" name="email" id="email" />
+		</label>
+		<label for="message"
+			>Message:
+			<textarea name="message" id="message" />
+		</label>
 		<button>Send it!</button>
 	</form>
 </section>
 
 <style>
-  
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+	/* input, */
+	textarea {
+		height: 100%;
+		margin-block-end: 2rem;
+	}
+	label {
+		display: flex;
+		flex-direction: column;
+	}
+	@media screen and (min-width: 1075px) {
+		form {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr;
+			gap: 1rem;
+		}
+
+		label[for='name'] {
+			grid-row: 1;
+		}
+		label[for='email'] {
+			grid-row: 2;
+		}
+		label[for='message'] {
+			grid-column: 2;
+			grid-row: 1 / 4;
+			margin-block-end: unset;
+		}
+
+		button {
+			grid-row: 3;
+			width: 50%;
+			height: 50%;
+			align-self: center;
+			justify-self: center;
+		}
+	}
 </style>
