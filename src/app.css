@@ -32,6 +32,14 @@ textarea {
 	background-color: var(--accent-color-light);
 }
 
+a {
+	color: var(--tertiary-color);
+}
+
+a:visited {
+	color: var(--accent-color)
+}
+
 button {
 	background-color: var(--accent-color-light);
 }

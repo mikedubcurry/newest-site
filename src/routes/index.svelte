@@ -51,8 +51,10 @@
 	}
 	/* input, */
 	textarea {
-		height: 100%;
+		/* height: 100%; */
+		height: 15rem;
 		margin-block-end: 2rem;
+		border: 2px inset rgb(118, 118, 118);
 	}
 	label {
 		display: flex;
