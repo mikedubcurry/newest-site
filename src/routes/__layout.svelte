@@ -43,14 +43,15 @@
 
 <style>
 	main {
-		max-width: 1024px;
+		max-width: calc(100vw - 128px - 2rem);
 		overflow-x: hidden;
 		margin: 0 auto;
 	}
 
-	@media screen and (max-width: 1075px) {
+	@media screen and (max-width: 600px) {
 		main {
 			margin-inline: 2rem;
+			max-width: unset;
 		}
 	}
 </style>

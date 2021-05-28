@@ -3,11 +3,11 @@
 	export let mobile: boolean;
 </script>
 
-<span class="navLinks" class:visible class:mobile>
+<span class="navLinks" class:visible class:notMobile={!mobile}>
 	<slot name="nav-links" />
 </span>
 
-<span class="otherLinks" class:visible class:mobile>
+<span class="otherLinks" class:visible class:notMobile={!mobile}>
 	<slot name="other-links" />
 </span>
 
@@ -32,9 +32,16 @@
 		left: unset;
 		right: -25%;
 	}
-	/* .mobile {
-		 width: 150vw; 
-	} */
+	span.otherLinks.notMobile {
+		right: 0;
+	}
+	span.navLinks.notMobile {
+		left: 0;
+	}
+	.notMobile {
+		visibility: visible;
+	}
+
 	.visible {
 		visibility: visible;
 		left: 0;

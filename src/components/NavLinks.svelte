@@ -23,10 +23,10 @@
 		list-style-type: none;
 		padding-inline: 1rem;
 		height: 100%;
-		min-width: 64px;
+		max-width: 64px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-		align-items: flex-start;
+		align-items: center;
 	}
 </style>
