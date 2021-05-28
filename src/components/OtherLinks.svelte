@@ -19,4 +19,19 @@
 </nav>
 
 <style>
+		nav {
+		height: 100%;
+	}
+	ul {
+		background-color: var(--accent-color-light-alpha);
+		border-radius: 4rem 0 0 4rem;
+		list-style-type: none;
+		padding-inline: 1rem;
+		height: 100%;
+		min-width: 64px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
 </style>

@@ -30,10 +30,12 @@
 {/if}
 
 <Header />
+
 <MobileNavLinks on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked} mobile={w < 600}>
 	<NavLinks slot="nav-links" />
 	<OtherLinks slot="other-links" />
 </MobileNavLinks>
+
 <main on:click={resetMobileBtn}>
 	<slot />
 </main>

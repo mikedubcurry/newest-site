@@ -22,14 +22,21 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+	.navLinks {
+		visibility: hidden;
+	}
+	.otherLinks {
+		visibility: hidden;
+	}
 	span.otherLinks {
 		left: unset;
 		right: -25%;
 	}
-	.mobile {
-		/* width: 150vw; */
-	}
+	/* .mobile {
+		 width: 150vw; 
+	} */
 	.visible {
+		visibility: visible;
 		left: 0;
 		/* width: 100vw; */
 	}
