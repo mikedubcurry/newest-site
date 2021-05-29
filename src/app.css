@@ -30,6 +30,7 @@ html {
 
 input,
 textarea {
+	font-family: inherit;
 	background-color: var(--accent-color-light);
 }
 

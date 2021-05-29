@@ -59,6 +59,7 @@
 	label {
 		display: flex;
 		flex-direction: column;
+		margin-block-end: 2rem;
 	}
 	@media screen and (min-width: 1075px) {
 		form {
@@ -66,6 +67,9 @@
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: 1fr 1fr 1fr;
 			gap: 1rem;
+		}
+		label{
+			margin-block-end: unset;
 		}
 
 		label[for='name'] {
