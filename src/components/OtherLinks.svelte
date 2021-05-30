@@ -19,7 +19,7 @@
 </nav>
 
 <style>
-		nav {
+	nav {
 		height: 100%;
 	}
 	ul {

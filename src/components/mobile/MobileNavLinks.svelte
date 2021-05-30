@@ -24,9 +24,15 @@
 	}
 	.navLinks {
 		visibility: hidden;
+		border-radius: 0 4rem 4rem 0;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
+			0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
 	}
 	.otherLinks {
 		visibility: hidden;
+		border-radius: 4rem 0 0 4rem;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
+			0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
 	}
 	span.otherLinks {
 		left: unset;

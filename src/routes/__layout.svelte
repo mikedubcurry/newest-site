@@ -43,7 +43,7 @@
 
 <style>
 	main {
-		max-width: calc(100vw - 128px - 2rem);
+		max-width: calc(100vw - 128px - 4rem);
 		overflow-x: hidden;
 		margin: 0 auto;
 	}
