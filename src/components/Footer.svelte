@@ -7,3 +7,9 @@
 		<span>{year} Made with 💜 in <a href="https://kit.svelte.dev/">SvelteKit</a></span>
 	{/if}
 </footer>
+
+<style>
+	footer {
+		text-align: center;
+	}
+</style>
