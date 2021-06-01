@@ -9,6 +9,7 @@
 	import OtherLinks from '../components/OtherLinks.svelte';
 
 	let w: number;
+
 	function handleMenuBtnChange() {
 		mobileBtnClicked = !mobileBtnClicked;
 	}
@@ -52,6 +53,7 @@
 		main {
 			margin-inline: 2rem;
 			max-width: unset;
+
 		}
 	}
 </style>
