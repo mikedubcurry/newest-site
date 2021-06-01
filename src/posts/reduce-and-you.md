@@ -15,14 +15,14 @@ Reduce tends to be confusing for a lot of newer developers, mainly due to the fa
 Some examples of what you can use `reduce` for are: return a flat array from an array of nested arrays or calculate a total or an average. I like to think of it as taking a source array, and "reducing" it somehow. 
 
 For me, a lot of the confusion around reduce comes with how all the documentation deal with defining the method. From [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce), (highly reccomend reading through that link) `Array.reduce` is defined as follows:
-```
+```javascript
 reduce((accumulator, currentValue) => { ... } )
 reduce((accumulator, currentValue, index) => { ... } )
 reduce((accumulator, currentValue, index, array) => { ... } )
 reduce((accumulator, currentValue, index, array) => { ... }, initialValue)
 ```
 These parameter names make sense if I'm trying to find a total of an array of numbers. Consider the followig example:
-```
+```javascript
 // inches of rain each day
 const rainPerDay = [1.2, 0.4, 2.1, 0.1, 0, 1.0, 0.2];
 
@@ -30,7 +30,7 @@ const rainPerDay = [1.2, 0.4, 2.1, 0.1, 0, 1.0, 0.2];
 const totalRain = ???
 ```
 We can get a value for `totalRain` a few different ways. 
-```
+```javascript
 // change totalRain to a 'let' declaration
 let totalRain = 0;
 
@@ -42,7 +42,7 @@ rainPerDay.forEach((inches) => {
 ```
 That code makes sense, but involves mutating a global variable, which may be changed before you have the chance to use it. 
 Using `reduce` can let us refactor the code to:
-```
+```javascript
 const totalRain = rainPerDay.reduce((total, inches) => {
 	total += inches;
 	return total;
@@ -52,7 +52,7 @@ const totalRain = rainPerDay.reduce((total, inches) => {
 ```
 
 That example uses the first option defined in MDN definition of `reduce`: `reduce((accumulator, currentValue) => { ... } )`, but also includes `initialValue` as seen in the last definition. `Accumulator` refers to whatever is returned from the function passed to reduce, `total` in our example above. If we left of the `initialValue`, the first item in the array would be used instead, and `currentValue` would be the second item in the array. The callback function is then called for each item in the array, returning the `accumulator` each time. For our example, `initialValue` is 0, which is used as the initial value for our accumulator, `total` and on the first iteration, you add the first item of `allColors`, `1.2` and return the result is returned. That returned value is then used as `total` in the following iterations until all the items are accounted for. We can get the average rainfall for the week in a similar manner:
-```
+```javascript
 // inches of rain each day
 const rainPerDay = [1.2, 0.4, 2.1, 0.1, 0, 1.0, 0.2];
 
@@ -67,7 +67,7 @@ const average = totalRain / rainPerDay.length;
 ```
 
 Or with `reduce`...
-```
+```javascript
 const average = rainPerDay.reduce((total, inches, index, array) => {
   total += inches;
   if(index === array.length - 1) {
@@ -81,7 +81,7 @@ const average = rainPerDay.reduce((total, inches, index, array) => {
 Be advised, using `reduce` for something like our simple totaling or averaging use cases, isn't really necessary. It uses the same number of lines, and may be harder to understand at a glance when you refer to the code in the future. 
 
 For another example, let's say we have an array with other arrays inside. At work, I had to connect to the Jira API, and if you get a response consisting of an issue, the issue description is structured as the following:
-```
+```javascript
 {
   issue: {
     ...,
@@ -103,7 +103,7 @@ The `description` field holds an array of objects, each with few different prope
 
 Tackling this problem, I first tried to create a temporary variable while looping over `description` to store the different values inside `content.text`. Let's see how that might look.
 
-```
+```javascript
 let description = "";
 issue.description.forEach((desc) => {
   desc.content.forEach((line) => {
@@ -117,7 +117,7 @@ issue.description.forEach((desc) => {
 This solution may be fine, but it involves a global variable as well as the fact that it takes a second to read and figure out what's going on with the code.
 
 Using `reduce` gives us:
-```
+```javascript
 
 const description = issue.description.reduce((desc, line) => {
   desc += line.content
