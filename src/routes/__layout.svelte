@@ -25,7 +25,7 @@
 </script>
 
 <svelte:body on:click={resetMobileBtn} />
-
+<div class="wrapper">
 {#if w < 600}
 	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
 {/if}
@@ -37,10 +37,11 @@
 	<OtherLinks slot="other-links" />
 </MobileNavLinks>
 
-<main on:click={resetMobileBtn}>
-	<slot />
-</main>
-<Footer />
+	<main on:click={resetMobileBtn}>
+		<slot />
+	</main>
+	<Footer />
+</div>
 
 <style>
 	main {
@@ -48,7 +49,12 @@
 		overflow-x: hidden;
 		margin: 0 auto;
 	}
-
+	
+	.wrapper {
+		padding-bottom: 2.5rem;
+		min-height: 100vh;
+		position: relative;
+	}
 	@media screen and (max-width: 600px) {
 		main {
 			margin-inline: 2rem;
