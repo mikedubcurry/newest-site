@@ -3,7 +3,6 @@
 	import { quintInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 	export let isX: boolean;
-
 	const dispatch = createEventDispatcher();
 	const deltaY = tweened(0, {
 		duration: 400,
@@ -15,7 +14,7 @@
 		easing: quintInOut,
 		delay: 0
 	});
-	function handleClick(e: MouseEvent) {
+	function handleClick(e: Event) {
 		e.stopPropagation();
 		if (!isX) {
 			if ($deltaX === 1) $deltaX = 0;
@@ -37,7 +36,13 @@
 	}
 </script>
 
-<div on:click={handleClick}>
+<div
+	tabindex="0"
+	on:keydown={(e) => {
+		if (e.key === 'Enter') handleClick(e);
+	}}
+	on:click={handleClick}
+>
 	<svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
 		<line
 			x1="1"

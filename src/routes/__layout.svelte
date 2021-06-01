@@ -1,13 +1,13 @@
-
 <script lang="ts">
 	import { browser } from '$app/env';
-	import Header from '../lib/Header/index.svelte';
-	import MobileNav from '../lib/MobileNav/index.svelte';
-	import MobileNavLinks from '../lib/MobileNavLinks/index.svelte';
-	import OtherLinks from '../lib/OtherLinks/index.svelte';
-	import NavLinks from '../lib/NavLinks/index.svelte';
-	import Footer from '../lib/Footer/index.svelte';
+	import Footer from '../components/Footer.svelte';
+	import Header from '../components/Header.svelte';
+	import MobileNavBtn from '../components/mobile/MobileNavBtn.svelte';
+	import MobileNavLinks from '../components/mobile/MobileNavLinks.svelte';
+	import NavLinks from '../components/NavLinks.svelte';
 	import '../app.css';
+	import OtherLinks from '../components/OtherLinks.svelte';
+
 	let w: number;
 
 	function handleMenuBtnChange() {
@@ -24,38 +24,36 @@
 	}
 </script>
 
+<svelte:body on:click={resetMobileBtn} />
+
 {#if w < 600}
-	<MobileNav on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
+	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
 {/if}
-<MobileNavLinks
-	mobile={w < 600}
-	on:menubtnchange={resetMobileBtn}
-	visible={mobileBtnClicked || w > 600}
->
-	<NavLinks on:menubtnchange={resetMobileBtn} slot="nav-links" />
+
+<Header />
+
+<MobileNavLinks on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked} mobile={w < 600}>
+	<NavLinks slot="nav-links" />
 	<OtherLinks slot="other-links" />
 </MobileNavLinks>
 
-<Header />
-<main class:top={!mobileBtnClicked} on:click={resetMobileBtn}>
+<main on:click={resetMobileBtn}>
 	<slot />
 </main>
+<Footer />
 
 <style>
 	main {
-		width: 100%;
-		box-sizing: border-box;
-		max-width: 1024px;
+		max-width: calc(100vw - 128px - 4rem);
+		overflow-x: hidden;
 		margin: 0 auto;
-		margin-block-start: 10rem;
 	}
-	.top {
-		position: relative;
-		z-index: 100;
-	}
+
 	@media screen and (max-width: 600px) {
 		main {
-			padding: 1rem;
+			margin-inline: 2rem;
+			max-width: unset;
+
 		}
 	}
 </style>
