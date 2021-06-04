@@ -37,18 +37,21 @@
 
 <h1>Blog Posts</h1>
 
-{#each allTags as tag}
-	<span class="tag-list" class:selected={selectedTags.includes(tag)} on:click={clickTag}>{tag}</span
-	>&nbsp;
-{/each}
-{#if selectedTags.length}
-	<span on:click={() => (selectedTags = [])}>clear</span>
-{/if}
+<ul class="tag-list">
+	{#each allTags as tag}
+		<li class="tag" class:selected={selectedTags.includes(tag)} on:click={clickTag}>{tag}</li>
+		&nbsp;
+	{/each}
+	{#if selectedTags.length}
+		<li class="tag clear" on:click={() => (selectedTags = [])}>clear</li>
+	{/if}
+</ul>
+
 {#each filteredPosts as post}
 	<article>
 		<h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
 		{#each post.tags as tag}
-			<span on:click={clickTag}>{tag}</span>&nbsp;
+			<span class="tag" on:click={clickTag}>{tag}</span>&nbsp;
 		{/each}
 		<p>{post.summary}</p>
 	</article>
@@ -68,18 +71,30 @@
 	a {
 		font-size: var(--medium-font-size);
 	}
-	
-	.tag-list.selected {
+
+	.tag-list {
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+
+
+	.tag-list .selected {
 		border: 2px var(--accent-color) solid;
 	}
-	span {
+
+	.tag {
 		background-color: var(--secondary-color);
 		border-radius: 14px;
 		transition: background-color 0.3s ease;
 		padding: 0.5rem;
 		cursor: pointer;
+		margin-block-end: 1rem;
 	}
-
+	.clear {
+		background-color: var(--warn-color);
+	}
 	article:hover {
 		background-color: var(--secondary-color);
 	}

@@ -1,8 +1,8 @@
 ---
 title: new post
 tags:
-  - random
-  - not included
+  - crypto
+  - C++
 slug: new-post
 ---
 #new post

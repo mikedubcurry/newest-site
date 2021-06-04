@@ -2,7 +2,7 @@
 title: new post
 tags:
   - random
-  - not included
+  - gardening
 slug: new-post
 ---
 #new post

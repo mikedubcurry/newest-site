@@ -3,10 +3,8 @@
 
 <header>Mike Curry</header>
 
-
 <style>
-  header
-  {
-    text-align: center;
-  }
+	header {
+		text-align: center;
+	}
 </style>

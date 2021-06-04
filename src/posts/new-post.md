@@ -1,8 +1,8 @@
 ---
 title: new post
 tags:
-  - random
-  - not included
+  - Python
+  - crypto
 slug: new-post
 ---
 #new post
