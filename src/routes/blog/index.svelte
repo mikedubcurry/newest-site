@@ -76,6 +76,9 @@
 		list-style-type: none;
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		
 	}
 
 
@@ -86,11 +89,13 @@
 
 	.tag {
 		background-color: var(--secondary-color);
+		border: 2px solid var(--secondary-color);
 		border-radius: 14px;
 		transition: background-color 0.3s ease;
 		padding: 0.5rem;
 		cursor: pointer;
 		margin-block-end: 1rem;
+		height: fit-content;
 	}
 	.clear {
 		background-color: var(--warn-color);
