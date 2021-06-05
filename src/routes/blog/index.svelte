@@ -68,6 +68,7 @@
 	h2 {
 		margin-block-start: 0;
 	}
+
 	a {
 		font-size: var(--medium-font-size);
 	}
@@ -78,10 +79,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		
 	}
-
-
 
 	.tag-list .selected {
 		border: 2px var(--accent-color) solid;
@@ -97,12 +95,16 @@
 		margin-block-end: 1rem;
 		height: fit-content;
 	}
+
 	.clear {
 		background-color: var(--warn-color);
+		border: 2px solid var(--warn-color);
 	}
+
 	article:hover {
 		background-color: var(--secondary-color);
 	}
+
 	article:hover span {
 		background-color: var(--primary-color);
 	}
