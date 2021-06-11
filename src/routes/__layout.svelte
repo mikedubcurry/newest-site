@@ -54,6 +54,7 @@
 		padding-bottom: 2.5rem;
 		min-height: 100vh;
 		position: relative;
+		width: 100%;
 	}
 	@media screen and (max-width: 600px) {
 		main {
