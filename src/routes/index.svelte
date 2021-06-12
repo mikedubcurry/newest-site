@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '../utils/form';
 </script>
 
 <section>
@@ -27,20 +28,28 @@
 		facilis voluptas est placeat adipisci hic quisquam suscipit voluptatum enim minus, ullam,
 		officiis quas ipsam? Vitae, quia eaque!
 	</p>
-	<form>
+	<form
+		action="/"
+		method="post"
+		use:enhance={{
+			result: async (res, form) => {
+				form.reset();
+			}
+		}}
+	>
 		<label for="name"
 			>Name:
-			<input type="text" name="name" id="name" />
+			<input required type="text" name="name" id="name" />
 		</label>
 		<label for="email"
 			>Email:
-			<input type="text" name="email" id="email" />
+			<input required type="text" name="email" id="email" />
 		</label>
 		<label for="message"
 			>Message:
-			<textarea name="message" id="message" />
+			<textarea required name="message" id="message" />
 		</label>
-		<button>Send it!</button>
+		<button type="submit">Send it!</button>
 	</form>
 </section>
 
@@ -68,7 +77,7 @@
 			grid-template-rows: 1fr 1fr 1fr;
 			gap: 1rem;
 		}
-		label{
+		label {
 			margin-block-end: unset;
 		}
 
