@@ -3,11 +3,11 @@
 	export let mobile: boolean;
 </script>
 
-<span class="navLinks" class:visible class:notMobile={!mobile}>
+<span class="navLinks" class:visible >
 	<slot name="nav-links" />
 </span>
 
-<span class="otherLinks" class:visible class:notMobile={!mobile}>
+<span class="otherLinks" class:visible >
 	<slot name="other-links" />
 </span>
 
@@ -34,27 +34,29 @@
 		border-radius: 4rem 0 0 4rem;
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
 			0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
+		right: -25%;
 	}
 	span.otherLinks {
 		left: unset;
-		right: -25%;
-	}
-	span.otherLinks.notMobile {
-		right: 0;
-	}
-	span.navLinks.notMobile {
-		left: 0;
-	}
-	.notMobile {
-		visibility: visible;
 	}
 
-	.visible {
+
+	/* .visible {
 		visibility: visible;
-		left: 0;
-		/* width: 100vw; */
-	}
+		left: 0;		width: 100vw; */
+
+	/* }
 	.visible.otherLinks {
 		right: 0;
+	} */
+	@media screen and (min-width: 500px) {
+		.otherLinks {
+			right: 0;
+			visibility: visible;
+		}
+		.navLinks {
+			left: 0;
+			visibility: visible;
+		}
 	}
 </style>
