@@ -63,6 +63,7 @@
 		transition: background-color 0.3s ease;
 		padding: 2rem;
 		border-radius: 14px;
+		margin-block-end: 2rem;
 	}
 
 	h2 {
