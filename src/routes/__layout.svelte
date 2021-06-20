@@ -26,16 +26,16 @@
 
 <svelte:body on:click={resetMobileBtn} />
 <div class="wrapper">
-<!-- {#if w < 600} -->
+	<!-- {#if w < 600} -->
 	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
-<!-- {/if} -->
+	<!-- {/if} -->
 
-<Header />
+	<Header />
 
-<MobileNavLinks on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked} mobile={w < 600}>
-	<NavLinks slot="nav-links" />
-	<OtherLinks slot="other-links" />
-</MobileNavLinks>
+	<MobileNavLinks on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked}>
+		<NavLinks slot="nav-links" />
+		<OtherLinks slot="other-links" />
+	</MobileNavLinks>
 
 	<main on:click={resetMobileBtn}>
 		<slot />
@@ -49,7 +49,7 @@
 		overflow-x: hidden;
 		margin: 0 auto;
 	}
-	
+
 	.wrapper {
 		padding-bottom: 2.5rem;
 		min-height: 100vh;
@@ -60,7 +60,6 @@
 		main {
 			margin-inline: 2rem;
 			max-width: unset;
-
 		}
 	}
 </style>

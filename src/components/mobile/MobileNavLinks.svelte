@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let visible: boolean;
-	export let mobile: boolean;
 </script>
 
 <span class="navLinks" class:visible >
@@ -41,14 +40,14 @@
 	}
 
 
-	/* .visible {
+	.visible {
 		visibility: visible;
-		left: 0;		width: 100vw; */
+		left: 0;	
 
-	/* }
+	}
 	.visible.otherLinks {
 		right: 0;
-	} */
+	}
 	@media screen and (min-width: 500px) {
 		.otherLinks {
 			right: 0;
