@@ -2,18 +2,18 @@
 	export let visible: boolean;
 </script>
 
-<span class="navLinks" class:visible >
+<span class="navLinks" class:visible>
 	<slot name="nav-links" />
 </span>
 
-<span class="otherLinks" class:visible >
+<span class="otherLinks" class:visible>
 	<slot name="other-links" />
 </span>
 
 <style>
 	span {
 		position: fixed;
-		top: 20vh;
+		top: calc((50px + 4rem) * 2);
 		left: -25%;
 		transition: all 0.3s ease;
 		height: 50vh;
@@ -39,11 +39,9 @@
 		left: unset;
 	}
 
-
 	.visible {
 		visibility: visible;
-		left: 0;	
-
+		left: 0;
 	}
 	.visible.otherLinks {
 		right: 0;

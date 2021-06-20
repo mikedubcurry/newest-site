@@ -26,9 +26,7 @@
 
 <svelte:body on:click={resetMobileBtn} />
 <div class="wrapper">
-	<!-- {#if w < 600} -->
 	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
-	<!-- {/if} -->
 
 	<Header />
 
