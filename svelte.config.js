@@ -1,4 +1,6 @@
+// import { config } from 'dotenv';
 import preprocess from 'svelte-preprocess';
+// config();
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
