@@ -22,8 +22,8 @@ export async function get(request: Request<any, FormData>) {
 			{
 				hobby: 'gardening',
 				outlets: [
-					'I like to grow vegetables in my garden during the summer',
-					'My favorite things to grow are peppers and leafy greens like kale or spinach',
+					'I like to grow vegetables in my garden during the summer.',
+					'My favorite things to grow are peppers and leafy greens like kale or spinach.',
 					'I use self produced compost to feed my vegetables.'
 				]
 			},
