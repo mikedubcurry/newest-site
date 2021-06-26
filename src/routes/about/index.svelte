@@ -20,6 +20,7 @@
 			description: string;
 			repo: { href: string; text: string }[];
 			title: string;
+			liveLink: string | null;
 		}[];
 		workHistory: {
 			position: string;
@@ -54,7 +55,11 @@
 <section>
 	{#each projects as prj}
 		<div class="prj">
-			<h3>{prj.title}</h3>
+			{#if prj.liveLink}
+				<a href={prj.liveLink}><h3>{prj.title}</h3></a>
+			{:else}
+				<h3>{prj.title}</h3>
+			{/if}
 			<ul>
 				{#each prj.repo as repo}
 					<li><a href={repo.href}>{repo.text}</a></li>

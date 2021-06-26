@@ -50,7 +50,8 @@ export async function get(request: Request<any, FormData>) {
 				repo: [
 					{ text: 'Server', href: 'https://github.com/mikedubcurry/budget-app' },
 					{ text: 'Client', href: 'https://github.com/mikedubcurry/budget-app-client' }
-				]
+				],
+				liveLink: null
 			},
 			{
 				title: 'Inventory Manager',
@@ -62,25 +63,29 @@ export async function get(request: Request<any, FormData>) {
 						href: 'https://github.com/mikedubcurry/CG-Oh-Server'
 					},
 					{ text: 'Client', href: 'https://github.com/mikedubcurry/CG-Oh-Client' }
-				]
+				],
+				liveLink: null
 			},
 			{
 				title: 'Drum Machine',
 				description:
 					'A simple drum sequencer with tempo and gain control. Using the Web Audio API to play different samples as well as schedule the timing for drum hits.',
-				repo: [{ text: 'Client', href: 'https://github.com/mikedubcurry/drummachine' }]
+				repo: [{ text: 'Client', href: 'https://github.com/mikedubcurry/drummachine' }],
+				liveLink: 'https://kind-carson-9fc8c2.netlify.app/'
 			},
 			{
 				title: 'XKCD Comic Viewer',
 				description:
 					'A really simple interface to view any XKCD comic. It uses Svelte and fetches comics from an XKCD api.',
-				repo: [{ text: 'App', href: 'https://github.com/mikedubcurry/xkcd-viewer-svelte' }]
+				repo: [{ text: 'App', href: 'https://github.com/mikedubcurry/xkcd-viewer-svelte' }],
+				liveLink: null
 			},
 			{
 				title: 'This Site',
 				description:
 					'While still in beta during the development of this site, I used SvelteKit to handle server rendering and routing. I consider myself a die-hard Svelte fanboy now so it is my go-to when building frontend UIs.',
-				repo: [{ text: 'Site', href: 'https://github.com/mikedubcurry/newest-site' }]
+				repo: [{ text: 'Site', href: 'https://github.com/mikedubcurry/newest-site' }],
+				liveLink: null
 			}
 		]
 	};
