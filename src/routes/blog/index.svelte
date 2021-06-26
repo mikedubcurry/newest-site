@@ -11,6 +11,7 @@
 			};
 		}
 	}
+	export const prerender = true;
 </script>
 
 <script lang="ts">
