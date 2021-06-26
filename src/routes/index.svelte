@@ -56,9 +56,9 @@
 	<p>
 		From time to time, I run across a challenging topic in programming and in order to help me
 		remember it better, I like to write about it. I'm still pretty new to blogging but you can find
-		my posts over <a href="/blog">here</a>. Links to my GitHub and Twitter profile are in the
-		right-hand side nav bar, as well as the SvelteKit docs if you're considerig building your own
-		site using this dope technology.
+		my posts over <a rel="external" href="/blog">here</a>. Links to my GitHub and Twitter profile
+		are in the right-hand side nav bar, as well as the SvelteKit docs if you're considerig building
+		your own site using this dope technology.
 	</p>
 </section>
 <section>
