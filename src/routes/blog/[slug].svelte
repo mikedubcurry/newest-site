@@ -11,13 +11,13 @@
 			};
 		}
 	}
+	export const prerender = true;
 </script>
 
 <script lang="ts">
-  export let post
+	export let post;
 </script>
 
 <svelte:head><title>Mike Curry - {post.data.title}</title></svelte:head>
-
 
 {@html post.content}
