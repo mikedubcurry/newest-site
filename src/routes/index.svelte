@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { enhance } from '../utils/form';
 	// import selfie from '../assets/selfie-smallest.jpg';
-	import pixels from '../assets/selfie-pixel.jpg';
+	import pixels from '../../assets/selfie-pixel.jpg';
 	import { onMount } from 'svelte';
-import { text } from 'svelte/internal';
+	import { text } from 'svelte/internal';
 
 	let contactStatus = '';
 	let contactMessage = '';
@@ -16,7 +16,7 @@ import { text } from 'svelte/internal';
 						let img = document.getElementById('selfie') as HTMLImageElement;
 						let pxl = document.getElementById('pixels');
 						let selfie;
-						import('../assets/selfie-smallest.jpg').then((image) => {
+						import('../../assets/selfie-smallest.jpg').then((image) => {
 							selfie = image.default;
 							img.src = selfie;
 							pxl.classList.add('transparent');
@@ -73,8 +73,8 @@ import { text } from 'svelte/internal';
 			result: async (res, form) => {
 				// let body = await res.text();
 				console.log(await res.text());
-				contactStatus = ''
-				contactMessage = ''
+				contactStatus = '';
+				contactMessage = '';
 				pending = false;
 				form.reset();
 			},
