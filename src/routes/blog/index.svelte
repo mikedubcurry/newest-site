@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
+	import {base} from '$app/paths'
 	export async function load({ fetch }) {
-		const res = await fetch('/blog.json');
+		const res = await fetch(`${base}/blog.json`);
 		if (res.ok) {
 			let posts = await res.json();
 			return {
