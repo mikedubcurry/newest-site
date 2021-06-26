@@ -3,7 +3,11 @@
 	// import selfie from '../assets/selfie-smallest.jpg';
 	import pixels from '../assets/selfie-pixel.jpg';
 	import { onMount } from 'svelte';
+import { text } from 'svelte/internal';
 
+	let contactStatus = '';
+	let contactMessage = '';
+	let pending = false;
 	onMount(() => {
 		let observer = new IntersectionObserver(
 			(e, o) => {
@@ -67,7 +71,22 @@
 		method="post"
 		use:enhance={{
 			result: async (res, form) => {
+				// let body = await res.text();
+				console.log(await res.text());
+				contactStatus = ''
+				contactMessage = ''
+				pending = false;
 				form.reset();
+			},
+			error: async (res, err, form) => {
+				const { status, message } = await res.json();
+				pending = false;
+				contactStatus = status;
+				contactMessage = message;
+				form.reset();
+			},
+			pending: async (res, form) => {
+				pending = true;
 			}
 		}}
 	>
@@ -83,11 +102,19 @@
 			>Message:
 			<textarea required name="message" id="message" />
 		</label>
-		<button type="submit">Send it!</button>
+		{#if contactStatus}
+			<p class="contactStatus" class:error={contactStatus === 'error'}>
+				{contactMessage}
+			</p>
+		{/if}
+		<button disabled={pending} type="submit">Send it!</button>
 	</form>
 </section>
 
 <style>
+	.error {
+		color: var(--warn-color, red);
+	}
 	form {
 		display: flex;
 		flex-direction: column;
