@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import {base} from '$app/paths'
+	import { base } from '$app/paths';
 	export async function load({ fetch }) {
 		const res = await fetch(`${base}/blog.json`);
 		if (res.ok) {
@@ -37,7 +37,6 @@
 </script>
 
 <svelte:head><title>Mike Curry - Blog</title></svelte:head>
-
 
 <h1>Blog Posts</h1>
 
