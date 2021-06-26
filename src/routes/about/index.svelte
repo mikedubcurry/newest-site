@@ -13,8 +13,6 @@
 </script>
 
 <script lang="ts">
-	import { text } from 'svelte/internal';
-
 	export let about: {
 		aboutMe: string;
 		hobbies: { hobby: string; outlets: string[] }[];
@@ -101,8 +99,7 @@
 		margin-left: 4rem;
 	}
 	.job li,
-	.prj li,
-	.hobby li {
+	.prj li {
 		list-style: none;
 	}
 </style>
