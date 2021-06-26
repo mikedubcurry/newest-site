@@ -33,7 +33,7 @@ export async function get(request: Request<any, FormData>) {
 					'I have been playing guitar on and off since I was 11 years old.',
 					'In 2020, my friends and I started playing in a band together, most of them as new musicians.',
 					'This drove me to learn more about music theory and more importantly, how to teach.',
-					'I also like to practice playing the piano although I\'m not very good at it.'
+					"I also like to practice playing the piano although I'm not very good at it."
 				]
 			}
 		],
@@ -78,7 +78,7 @@ export async function get(request: Request<any, FormData>) {
 				description:
 					'A really simple interface to view any XKCD comic. It uses Svelte and fetches comics from an XKCD api.',
 				repo: [{ text: 'App', href: 'https://github.com/mikedubcurry/xkcd-viewer-svelte' }],
-				liveLink: null
+				liveLink: 'https://youthful-bhabha-79baa1.netlify.app/'
 			},
 			{
 				title: 'This Site',
