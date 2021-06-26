@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import {base} from '$app/paths'
 	const dispatch = createEventDispatcher();
 </script>
 
 <nav>
 	<ul>
 		<li>
-			<a sveltekit:prefetch href="/">Home</a>
+			<a sveltekit:prefetch href={`${base}/`}>Home</a>
 		</li>
-		<li><a sveltekit:prefetch href="/about">About</a></li>
-		<li><a sveltekit:prefetch href="/blog">Blog</a></li>
+		<li><a sveltekit:prefetch href={`${base}/about`}>About</a></li>
+		<li><a sveltekit:prefetch href={`${base}/blog`}>Blog</a></li>
 	</ul>
 </nav>
 
