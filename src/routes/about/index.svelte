@@ -45,37 +45,64 @@
 <h2>Hobbies</h2>
 <section>
 	{#each hobbies as hobby}
-		<h3>{hobby.hobby}</h3>
-		<p>{hobby.outlets.join(' ')}</p>
+		<div class="hobby">
+			<h3>{hobby.hobby}</h3>
+			<p>{hobby.outlets.join(' ')}</p>
+		</div>
 	{/each}
 </section>
 
 <h2>Projects</h2>
 <section>
 	{#each projects as prj}
-		<h3>{prj.title}</h3>
-		<p>{prj.description}</p>
-		<ul>
-			{#each prj.repo as repo}
-				<li><a href={repo.href}>{repo.text}</a></li>
-			{/each}
-		</ul>
+		<div class="prj">
+			<h3>{prj.title}</h3>
+			<ul>
+				{#each prj.repo as repo}
+					<li><a href={repo.href}>{repo.text}</a></li>
+				{/each}
+			</ul>
+			<p>{prj.description}</p>
+		</div>
 	{/each}
 </section>
 
 <h2>Work History</h2>
 <section>
 	{#each workHistory as job}
-		<h3>{job.position}</h3>
-		<p>{job.company}</p>
-		<p>{job.from} - {job.to}</p>
-		<ul>
-			{#each job.duties as duty}
-				<li>{duty}</li>
-			{/each}
-		</ul>
+		<div class="job">
+			<h3>{job.position}</h3>
+			<p>{job.company}</p>
+			<p>{job.from} - {job.to}</p>
+			<ul>
+				{#each job.duties as duty}
+					<li>{duty}</li>
+				{/each}
+			</ul>
+		</div>
 	{/each}
 </section>
 
 <style>
+	h2 {
+		font-size: calc(var(--medium-font-size) + 1rem);
+	}
+	h3 {
+		font-size: var(--medium-font-size);
+	}
+	.job,
+	.prj,
+	.hobby {
+		margin-left: 2rem;
+	}
+	.job p,
+	.prj p,
+	.hobby p {
+		margin-left: 4rem;
+	}
+	.job li,
+	.prj li,
+	.hobby li {
+		list-style: none;
+	}
 </style>

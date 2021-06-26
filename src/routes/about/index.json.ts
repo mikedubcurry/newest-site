@@ -20,7 +20,7 @@ export async function get(request: Request<any, FormData>) {
 		],
 		hobbies: [
 			{
-				hobby: 'gardening',
+				hobby: 'Gardening',
 				outlets: [
 					'I like to grow vegetables in my garden during the summer.',
 					'My favorite things to grow are peppers and leafy greens like kale or spinach.',
@@ -28,11 +28,12 @@ export async function get(request: Request<any, FormData>) {
 				]
 			},
 			{
-				hobby: 'music',
+				hobby: 'Music',
 				outlets: [
 					'I have been playing guitar on and off since I was 11 years old.',
 					'In 2020, my friends and I started playing in a band together, most of them as new musicians.',
-					'This drove me to learn more about music theory and more importantly, how to teach.'
+					'This drove me to learn more about music theory and more importantly, how to teach.',
+					'I also like to practice playing the piano although I\'m not very good at it.'
 				]
 			}
 		],

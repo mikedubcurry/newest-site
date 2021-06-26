@@ -1,16 +1,51 @@
 <script lang="ts">
 	import { enhance } from '../utils/form';
+	// import selfie from '../assets/selfie-smallest.jpg';
+	import pixels from '../assets/selfie-pixel.jpg';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		let observer = new IntersectionObserver(
+			(e, o) => {
+				e.forEach((entry) => {
+					if (entry.isIntersecting) {
+						let img = document.getElementById('selfie') as HTMLImageElement;
+						let pxl = document.getElementById('pixels');
+						let selfie;
+						import('../assets/selfie-smallest.jpg').then((image) => {
+							selfie = image.default;
+							img.src = selfie;
+							pxl.classList.add('transparent');
+							img.classList.add('visible');
+						});
+					}
+				});
+			},
+			{
+				threshold: 1,
+				rootMargin: '-100px 0px -100px 0px'
+			}
+		);
+
+		observer.observe(document.getElementById('selfie'));
+	});
 </script>
 
 <section>
 	<h1>Welcome</h1>
-	<p>
-		My name is Michael and I'm a web developer! I have been coding since 2017, and I started my
-		career in tech in 2020. I mostly write HTML, CSS and JavaScript and use many tools that compile
-		to those languages such as TypeScript or SvelteKit, React, etc. When I'm not writing code, I
-		like to spend time with my partner and our two cats, Humphrey and Hamilton. You can learn more
-		about me by checking out the <a href="/about">About</a> page.
-	</p>
+	<div class="welcome">
+		<p>
+			My name is Michael and I'm a web developer! I have been coding since 2017, and I started my
+			career in tech in 2020. I mostly write HTML, CSS and JavaScript and use many tools that
+			compile to those languages such as TypeScript or SvelteKit, React, etc. When I'm not writing
+			code, I like to spend time with my partner and our two cats, Humphrey and Hamilton. You can
+			learn more about me by checking out the <a href="/about">About</a> page.
+		</p>
+		<div class="image">
+			<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
+			<img id="pixels" width="250" height="266" src={pixels} alt="a tasteful selfie" />
+		</div>
+	</div>
 	<h2>Check it Out</h2>
 	<p>
 		From time to time, I run across a challenging topic in programming and in order to help me
@@ -69,7 +104,39 @@
 		flex-direction: column;
 		margin-block-end: 2rem;
 	}
+	.welcome {
+		display: flex;
+		flex-direction: column;
+	}
+	.image {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: 266px;
+	}
+	.welcome img {
+		align-self: center;
+		transition: opacity 0.5s ease;
+		border-radius: 14px;
+	}
+	#pixels {
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		opacity: 1;
+	}
+	#selfie {
+		top: 0;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+	}
+
 	@media screen and (min-width: 1075px) {
+		.welcome {
+			flex-direction: row;
+		}
 		form {
 			display: grid;
 			grid-template-columns: 1fr 1fr;

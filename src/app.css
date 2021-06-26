@@ -96,6 +96,13 @@ code {
 
 }
 
+#pixels.transparent.transparent {
+	opacity: 0;
+}
+#selfie.visible.visible {
+	opacity: 1;
+}
+
 @media screen and (max-width: 600px) {
 	body {
 		display: flex;
