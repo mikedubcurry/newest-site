@@ -35,6 +35,8 @@
 	});
 </script>
 
+<svelte:head><title>Mike Curry - Home</title></svelte:head>
+
 <section>
 	<h1>Welcome</h1>
 	<div class="welcome">

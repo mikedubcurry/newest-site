@@ -35,6 +35,9 @@
 	});
 </script>
 
+<svelte:head><title>Mike Curry - Blog</title></svelte:head>
+
+
 <h1>Blog Posts</h1>
 
 <ul class="tag-list">

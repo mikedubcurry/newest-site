@@ -34,6 +34,8 @@
 	const { aboutMe, hobbies, projects, workHistory } = about;
 </script>
 
+<svelte:head><title>Michael Curry - About</title></svelte:head>
+
 <h1>About Me</h1>
 <section>
 	{#each aboutMe as pg}
