@@ -8,7 +8,7 @@ const md = markdownIt({ html: true });
 
 export async function get({ params }) {
 	const slug = params.slug;
-	const post = readFileSync(resolve(`src/_posts/${slug}.md`), { encoding: 'utf8' });
+	const post = readFileSync(resolve(`src/posts/${slug}.md`), { encoding: 'utf8' });
 	const gr = gray(post);
 	const content = md.render(gr.content);
 
