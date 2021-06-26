@@ -11,7 +11,8 @@ export async function get() {
 
 		return { ...gr.data };
 	});
-
+	console.log(postData);
+	
 	return {
 		status: 200,
 		body: postData
