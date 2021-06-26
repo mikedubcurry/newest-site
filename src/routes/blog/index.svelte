@@ -1,38 +1,38 @@
 <script context="module" lang="ts">
-	export async function load({ fetch }) {
-		const res = await fetch('/blog.json');
-		if (res.ok) {
-			let posts = await res.json();
-			return {
-				props: {
-					posts
-				}
-			};
-		}
-	}
+	// export async function load({ fetch }) {
+	// 	const res = await fetch('/blog.json');
+	// 	if (res.ok) {
+	// 		let posts = await res.json();
+	// 		return {
+	// 			props: {
+	// 				posts
+	// 			}
+	// 		};
+	// 	}
+	// }
 </script>
 
 <script lang="ts">
-	export let posts: { title: string; slug: string; summary: string; tags: string[] }[];
-	let selectedTags: string[] = [];
-	const allTags: string[] = posts.reduce((t, { tags }) => {
-		tags.forEach((tag) => {
-			if (!t.includes(tag)) t.push(tag);
-		});
-		return t;
-	}, []);
+	// export let posts: { title: string; slug: string; summary: string; tags: string[] }[];
+	// let selectedTags: string[] = [];
+	// const allTags: string[] = posts.reduce((t, { tags }) => {
+	// 	tags.forEach((tag) => {
+	// 		if (!t.includes(tag)) t.push(tag);
+	// 	});
+	// 	return t;
+	// }, []);
 
-	function clickTag(e: MouseEvent) {
-		let span = e.target as HTMLSpanElement;
-		const tag = span.innerText;
-		if (!selectedTags.includes(tag)) selectedTags = [...selectedTags, tag];
-		else selectedTags = selectedTags.filter((t) => t !== tag);
-	}
-	$: filteredPosts = posts.filter(({ tags }) => {
-		if (selectedTags.length) {
-			return selectedTags.some((t) => tags.includes(t));
-		} else return true;
-	});
+	// function clickTag(e: MouseEvent) {
+	// 	let span = e.target as HTMLSpanElement;
+	// 	const tag = span.innerText;
+	// 	if (!selectedTags.includes(tag)) selectedTags = [...selectedTags, tag];
+	// 	else selectedTags = selectedTags.filter((t) => t !== tag);
+	// }
+	// $: filteredPosts = posts.filter(({ tags }) => {
+	// 	if (selectedTags.length) {
+	// 		return selectedTags.some((t) => tags.includes(t));
+	// 	} else return true;
+	// });
 </script>
 
 <svelte:head><title>Mike Curry - Blog</title></svelte:head>
@@ -40,7 +40,7 @@
 
 <h1>Blog Posts</h1>
 
-<ul class="tag-list">
+<!-- <ul class="tag-list">
 	{#each allTags as tag}
 		<li class="tag" class:selected={selectedTags.includes(tag)} on:click={clickTag}>{tag}</li>
 		&nbsp;
@@ -58,7 +58,7 @@
 		{/each}
 		<p>{post.summary}</p>
 	</article>
-{/each}
+{/each} -->
 
 <style>
 	article {
