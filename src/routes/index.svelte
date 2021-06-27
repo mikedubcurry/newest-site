@@ -152,6 +152,7 @@
 		top: 0;
 		z-index: 2;
 		opacity: 1;
+		aspect-ratio: .91;
 	}
 	#selfie {
 		top: 0;
