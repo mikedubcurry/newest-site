@@ -23,7 +23,8 @@
 		height: 100%;
 	}
 	ul {
-		background-color: var(--accent-color-light-alpha);
+		font-weight: 600;
+		background-color: var(--accent-color-light-alpha, #a4acf5);
 		border-radius: 4rem 0 0 4rem;
 		list-style-type: none;
 		padding-inline: 1rem;
