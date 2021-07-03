@@ -1,63 +1,45 @@
 <script lang="ts">
-	import { browser } from '$app/env';
-	import Footer from '../components/Footer.svelte';
-	import Header from '../components/Header.svelte';
-	import MobileNavBtn from '../components/mobile/MobileNavBtn.svelte';
-	import MobileNavLinks from '../components/mobile/MobileNavLinks.svelte';
-	import NavLinks from '../components/NavLinks.svelte';
+	import Header from '$lib/Header/index.svelte';
 	import '../app.css';
-	import OtherLinks from '../components/OtherLinks.svelte';
-
-	let w: number;
-	function handleMenuBtnChange() {
-		mobileBtnClicked = !mobileBtnClicked;
-	}
-	function resetMobileBtn() {
-		mobileBtnClicked = false;
-	}
-	let mobileBtnClicked = false;
-	$: {
-		if (browser) {
-			w = window.innerWidth;
-		}
-	}
 </script>
-
-<svelte:body on:click={resetMobileBtn} />
-<div class="wrapper">
-{#if w < 600}
-	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
-{/if}
 
 <Header />
 
-<MobileNavLinks on:menubtnchange={resetMobileBtn} visible={mobileBtnClicked} mobile={w < 600}>
-	<NavLinks slot="nav-links" />
-	<OtherLinks slot="other-links" />
-</MobileNavLinks>
+<main>
+	<slot />
+</main>
 
-	<main on:click={resetMobileBtn}>
-		<slot />
-	</main>
-	<Footer />
-</div>
+<footer>
+	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+</footer>
 
 <style>
 	main {
-		max-width: calc(100vw - 128px - 4rem);
-		overflow-x: hidden;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		width: 100%;
+		max-width: 1024px;
 		margin: 0 auto;
+		box-sizing: border-box;
 	}
-	
-	.wrapper {
-		padding-bottom: 2.5rem;
-		min-height: 100vh;
-		position: relative;
+
+	footer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 40px;
 	}
-	@media screen and (max-width: 600px) {
-		main {
-			margin-inline: 2rem;
-			max-width: unset;
+
+	footer a {
+		font-weight: bold;
+	}
+
+	@media (min-width: 480px) {
+		footer {
+			padding: 40px 0;
 		}
 	}
 </style>
