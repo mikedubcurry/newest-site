@@ -24,7 +24,8 @@
 		background-color: var(--accent-color-light-alpha, #a4acf5);
 		border-radius: 0 4rem 4rem 0;
 		list-style-type: none;
-		padding-inline: 1rem;
+		padding-inline-start: 1rem;
+		padding-inline-end: 1rem;
 		height: 100%;
 		max-width: 64px;
 		display: flex;
@@ -32,4 +33,6 @@
 		justify-content: space-evenly;
 		align-items: center;
 	}
+
+
 </style>
