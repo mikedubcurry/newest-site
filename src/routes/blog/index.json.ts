@@ -10,9 +10,7 @@ export async function get() {
 		const gr = gray(post);
 
 		return { ...gr.data };
-	});
-	console.log(postData);
-	
+	});	
 	return {
 		status: 200,
 		body: postData
