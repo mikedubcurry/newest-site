@@ -30,7 +30,8 @@
 			}
 		);
 
-		observer.observe(document.getElementById('selfie'));
+		// observer.observe(document.getElementById('selfie'));
+		observer.observe(document.querySelector('.image'))
 	});
 
 	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
@@ -255,7 +256,8 @@
 	.welcome img {
 		align-self: center;
 		transition: opacity 0.5s ease;
-		border-radius: 14px;
+		/* border-radius: 14px; */
+		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
 	}
 	#pixels {
 		position: absolute;
