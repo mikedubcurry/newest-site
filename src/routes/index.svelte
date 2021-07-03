@@ -30,8 +30,7 @@
 			}
 		);
 
-		// observer.observe(document.getElementById('selfie'));
-		observer.observe(document.querySelector('.welcome'))
+		observer.observe(document.querySelector('.welcome'));
 	});
 
 	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
@@ -102,10 +101,10 @@
 		if (240 - length < 50) {
 			charCount.classList.add('error');
 		}
-		 if (240 - length < 0) {
-			disabled = true
+		if (240 - length < 0) {
+			disabled = true;
 		} else {
-			disabled = false
+			disabled = false;
 			charCount.classList.remove('error');
 		}
 		let t = setTimeout(() => {
@@ -129,7 +128,14 @@
 		</p>
 		<div class="image">
 			<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
-			<img id="pixels" width="250" height="266" src={pixels} alt="a tasteful selfie" />
+			<img
+				loading="lazy"
+				id="pixels"
+				width="250"
+				height="266"
+				src={pixels}
+				alt="a tasteful selfie"
+			/>
 		</div>
 	</div>
 	<h2>Check it Out</h2>
@@ -203,7 +209,7 @@
 				{contactMessage}
 			</p>
 		{/if}
-		<button  id="sendit" disabled={pending || disabled} type="submit">Send it!</button>
+		<button id="sendit" disabled={pending || disabled} type="submit">Send it!</button>
 	</form>
 </section>
 
@@ -249,6 +255,7 @@
 	.image {
 		position: relative;
 		display: flex;
+		/* flex: 1; */
 		justify-content: center;
 		width: 100%;
 		height: 266px;
@@ -276,6 +283,13 @@
 	@media screen and (min-width: 1075px) {
 		.welcome {
 			flex-direction: row;
+		}
+
+		.welcome p {
+			flex: 2;
+		}
+		.image {
+			flex: 1;
 		}
 		form {
 			display: grid;
