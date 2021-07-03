@@ -31,7 +31,7 @@
 			}
 		);
 
-		observer.observe(document.querySelector('.welcome'));
+		observer.observe(document.querySelector('.welcome a'));
 	});
 
 	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
