@@ -103,6 +103,10 @@ code {
 	opacity: 1;
 }
 
+.invalid-input {
+	background-color: var(--warn-color, #ff5379);
+}
+
 @media screen and (max-width: 600px) {
 	body {
 		display: flex;
