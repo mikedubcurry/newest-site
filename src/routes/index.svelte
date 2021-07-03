@@ -26,12 +26,12 @@
 			},
 			{
 				threshold: 1,
-				rootMargin: '-100px 0px -100px 0px'
+				rootMargin: '-80px 0px -80px 0px'
 			}
 		);
 
 		// observer.observe(document.getElementById('selfie'));
-		observer.observe(document.querySelector('.image'))
+		observer.observe(document.querySelector('.welcome'))
 	});
 
 	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
