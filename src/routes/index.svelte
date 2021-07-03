@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { enhance } from '../utils/form';
-	// import selfie from '../assets/selfie-smallest.jpg';
 	import pixels from '../../assets/selfie-pixel.jpg';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
+	let disabled = false;
 
 	let contactStatus = '';
 	let contactMessage = '';
@@ -27,12 +27,93 @@
 			},
 			{
 				threshold: 1,
-				rootMargin: '-100px 0px -100px 0px'
+				rootMargin: '-80px 0px -80px 0px'
 			}
 		);
 
-		observer.observe(document.getElementById('selfie'));
+		observer.observe(document.querySelector('.welcome'));
 	});
+
+	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
+		const value = event.currentTarget.value;
+		let el = event.currentTarget;
+		if (!value) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Please enter your name');
+			let t = setTimeout(() => {
+				el.classList.remove('invalid-input');
+				clearTimeout(t);
+			}, 2000);
+			return;
+		}
+		if (parseInt(value)) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Please enter your name');
+			return;
+		}
+		event.currentTarget.classList.remove('invalid-input');
+		event.currentTarget.removeAttribute('title');
+		return;
+	}
+	function validateEmail(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
+		const value = event.currentTarget.value;
+		if (!value || !value.includes('@')) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Please enter your email');
+			return;
+		}
+		let atindex = value.indexOf('@');
+		if (!value[atindex - 1] || !value[atindex + 1]) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Please enter your email');
+			return;
+		}
+		event.currentTarget.classList.remove('invalid-input');
+		event.currentTarget.removeAttribute('title');
+		return;
+	}
+	function validateMessage(
+		event: FocusEvent & { currentTarget: EventTarget & HTMLTextAreaElement }
+	) {
+		const value = event.currentTarget.value;
+		let el = event.currentTarget;
+		let t = setTimeout(() => {
+			el.classList.remove('invalid-input');
+			clearTimeout(t);
+		}, 2000);
+		if (!value) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Please enter a message');
+
+			return;
+		}
+		if (value.length > 240) {
+			event.currentTarget.classList.add('invalid-input');
+			event.currentTarget.setAttribute('title', 'Message character limit exceeded');
+			return;
+		}
+	}
+	function messageChange(event: Event & { currentTarget: EventTarget & HTMLTextAreaElement }) {
+		const { length } = event.currentTarget.value;
+		let el = event.currentTarget;
+		const charCount = document.querySelector('.charCount');
+		console.log(length);
+		charCount.innerHTML = (240 - length).toString();
+		if (240 - length < 50) {
+			charCount.classList.add('error');
+		}
+		if (240 - length < 0) {
+			disabled = true;
+		} else {
+			disabled = false;
+			charCount.classList.remove('error');
+		}
+		let t = setTimeout(() => {
+			el.classList.remove('error');
+			clearTimeout(t);
+		}, 2000);
+	}
+
 </script>
 
 <svelte:head><title>Mike Curry - Home</title></svelte:head>
@@ -49,16 +130,23 @@
 		</p>
 		<div class="image">
 			<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
-			<img id="pixels" width="250" height="266" src={pixels} alt="a tasteful selfie" />
+			<img
+				loading="lazy"
+				id="pixels"
+				width="250"
+				height="266"
+				src={pixels}
+				alt="a tasteful selfie"
+			/>
 		</div>
 	</div>
 	<h2>Check it Out</h2>
 	<p>
 		From time to time, I run across a challenging topic in programming and in order to help me
 		remember it better, I like to write about it. I'm still pretty new to blogging but you can find
-		my posts over <a href={`${base}/blog`}>here</a>. Links to my GitHub and Twitter profile are in
-		the right-hand side nav bar, as well as the SvelteKit docs if you're considerig building your
-		own site using this dope technology.
+		my posts over <a aria-label="link to blog page" href={`${base}/blog`}>here</a>. Links to my
+		GitHub and Twitter profile are in the right-hand side nav bar, as well as the SvelteKit docs if
+		you're considerig building your own site using this dope technology.
 	</p>
 </section>
 <section>
@@ -94,27 +182,41 @@
 	>
 		<label for="name"
 			>Name:
-			<input required type="text" name="name" id="name" />
+			<input autocomplete="off" on:blur={validateName} required type="text" name="name" id="name" />
 		</label>
 		<label for="email"
 			>Email:
-			<input required type="text" name="email" id="email" />
+			<input
+				autocomplete="off"
+				on:blur={validateEmail}
+				required
+				type="text"
+				name="email"
+				id="email"
+			/>
 		</label>
 		<label for="message"
 			>Message:
-			<textarea required name="message" id="message" />
+			<textarea
+				on:input={messageChange}
+				on:blur={validateMessage}
+				required
+				name="message"
+				id="message"
+			/>
+			<div class="charCount">240</div>
 		</label>
 		{#if contactStatus}
 			<p class="contactStatus" class:error={contactStatus === 'error'}>
 				{contactMessage}
 			</p>
 		{/if}
-		<button disabled={pending} type="submit">Send it!</button>
+		<button id="sendit" disabled={pending || disabled} type="submit">Send it!</button>
 	</form>
 </section>
 
 <style>
-	.error {
+	.error.error {
 		color: var(--warn-color, red);
 	}
 	form {
@@ -125,11 +227,28 @@
 		height: 15rem;
 		margin-block-end: 2rem;
 		border: 2px inset rgb(118, 118, 118);
+		position: relative;
+		resize: none;
+	}
+	.charCount {
+		background-color: var(--tertiary-color, #14297d);
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--secondary-color);
+		border-radius: 100%;
+		width: 40px;
+		height: 40px;
+		bottom: 25px;
+		right: 5px;
+		z-index: 50;
 	}
 	label {
 		display: flex;
 		flex-direction: column;
 		margin-block-end: 2rem;
+		position: relative;
 	}
 	.welcome {
 		display: flex;
@@ -138,6 +257,7 @@
 	.image {
 		position: relative;
 		display: flex;
+		/* flex: 1; */
 		justify-content: center;
 		width: 100%;
 		height: 266px;
@@ -145,13 +265,15 @@
 	.welcome img {
 		align-self: center;
 		transition: opacity 0.5s ease;
-		border-radius: 14px;
+		/* border-radius: 14px; */
+		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
 	}
 	#pixels {
 		position: absolute;
 		top: 0;
 		z-index: 2;
 		opacity: 1;
+		aspect-ratio: 0.91;
 	}
 	#selfie {
 		top: 0;
@@ -164,6 +286,14 @@
 		.welcome {
 			flex-direction: row;
 		}
+
+		.welcome p {
+			flex: 2;
+		}
+		.image {
+			flex: 1;
+		}
+    
 		form {
 			display: grid;
 			grid-template-columns: 1fr 1fr;

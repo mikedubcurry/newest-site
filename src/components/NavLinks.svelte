@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import {base} from '$app/paths'
+	import { base } from '$app/paths';
 	const dispatch = createEventDispatcher();
 </script>
 
@@ -20,6 +20,7 @@
 	}
 	ul {
 		font-weight: 600;
+		background-color: #a4acf5;
 		background-color: var(--accent-color-light-alpha, #a4acf5);
 		border-radius: 0 4rem 4rem 0;
 		list-style-type: none;
