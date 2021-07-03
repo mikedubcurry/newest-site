@@ -3,7 +3,7 @@
 	import pixels from '../../assets/selfie-pixel.jpg';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
-
+	let disabled = false;
 	let contactStatus = '';
 	let contactMessage = '';
 	let pending = false;
@@ -35,9 +35,14 @@
 
 	function validateName(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
 		const value = event.currentTarget.value;
+		let el = event.currentTarget;
 		if (!value) {
 			event.currentTarget.classList.add('invalid-input');
 			event.currentTarget.setAttribute('title', 'Please enter your name');
+			let t = setTimeout(() => {
+				el.classList.remove('invalid-input');
+				clearTimeout(t);
+			}, 2000);
 			return;
 		}
 		if (parseInt(value)) {
@@ -70,9 +75,15 @@
 		event: FocusEvent & { currentTarget: EventTarget & HTMLTextAreaElement }
 	) {
 		const value = event.currentTarget.value;
+		let el = event.currentTarget;
+		let t = setTimeout(() => {
+			el.classList.remove('invalid-input');
+			clearTimeout(t);
+		}, 2000);
 		if (!value) {
 			event.currentTarget.classList.add('invalid-input');
 			event.currentTarget.setAttribute('title', 'Please enter a message');
+
 			return;
 		}
 		if (value.length > 240) {
@@ -83,6 +94,23 @@
 	}
 	function messageChange(event: Event & { currentTarget: EventTarget & HTMLTextAreaElement }) {
 		const { length } = event.currentTarget.value;
+		let el = event.currentTarget;
+		const charCount = document.querySelector('.charCount');
+		console.log(length);
+		charCount.innerHTML = (240 - length).toString();
+		if (240 - length < 50) {
+			charCount.classList.add('error');
+		}
+		 if (240 - length < 0) {
+			disabled = true
+		} else {
+			disabled = false
+			charCount.classList.remove('error');
+		}
+		let t = setTimeout(() => {
+			el.classList.remove('error');
+			clearTimeout(t);
+		}, 2000);
 	}
 </script>
 
@@ -145,33 +173,41 @@
 	>
 		<label for="name"
 			>Name:
-			<input on:blur={validateName} required type="text" name="name" id="name" />
+			<input autocomplete="off" on:blur={validateName} required type="text" name="name" id="name" />
 		</label>
 		<label for="email"
 			>Email:
-			<input on:blur={validateEmail} required type="text" name="email" id="email" />
+			<input
+				autocomplete="off"
+				on:blur={validateEmail}
+				required
+				type="text"
+				name="email"
+				id="email"
+			/>
 		</label>
 		<label for="message"
 			>Message:
 			<textarea
-				on:change={messageChange}
+				on:input={messageChange}
 				on:blur={validateMessage}
 				required
 				name="message"
 				id="message"
 			/>
+			<div class="charCount">240</div>
 		</label>
 		{#if contactStatus}
 			<p class="contactStatus" class:error={contactStatus === 'error'}>
 				{contactMessage}
 			</p>
 		{/if}
-		<button disabled={pending} type="submit">Send it!</button>
+		<button  id="sendit" disabled={pending || disabled} type="submit">Send it!</button>
 	</form>
 </section>
 
 <style>
-	.error {
+	.error.error {
 		color: var(--warn-color, red);
 	}
 	form {
@@ -183,16 +219,20 @@
 		margin-block-end: 2rem;
 		border: 2px inset rgb(118, 118, 118);
 		position: relative;
+		resize: none;
 	}
-	[for='message']::after {
-		background-color: gray;
+	.charCount {
+		background-color: var(--tertiary-color, #14297d);
 		position: absolute;
-		content: '0/240';
-		display: inline-block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--secondary-color);
+		border-radius: 100%;
 		width: 40px;
 		height: 40px;
-		bottom: 0;
-		right: 0;
+		bottom: 25px;
+		right: 5px;
 		z-index: 50;
 	}
 	label {
