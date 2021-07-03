@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	let disabled = false;
+
 	let contactStatus = '';
 	let contactMessage = '';
 	let pending = false;
@@ -112,6 +113,7 @@
 			clearTimeout(t);
 		}, 2000);
 	}
+
 </script>
 
 <svelte:head><title>Mike Curry - Home</title></svelte:head>
@@ -291,6 +293,7 @@
 		.image {
 			flex: 1;
 		}
+    
 		form {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
