@@ -30,7 +30,8 @@
 		background-image: linear-gradient(
 			var(--light-gray),
 			var(--primary-color) 60%,
-			var(--primary-color-alpha)
+			var(--primary-color-alpha),
+			#ffffff00 90%
 		);
 		transition: height .3s ease;
 	}

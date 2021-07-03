@@ -21,13 +21,14 @@
 							img.src = selfie;
 							pxl.classList.add('transparent');
 							img.classList.add('visible');
+							
 						});
 					}
 				});
 			},
 			{
 				threshold: 1,
-				rootMargin: '-80px 0px -80px 0px'
+				rootMargin: '-120px 0px -120px 0px'
 			}
 		);
 
@@ -261,25 +262,33 @@
 		justify-content: center;
 		width: 100%;
 		height: 266px;
+		z-index: 2;
+		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+
 	}
 	.welcome img {
 		align-self: center;
 		transition: opacity 0.5s ease;
 		/* border-radius: 14px; */
-		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+		/* clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%); */
 	}
 	#pixels {
 		position: absolute;
 		top: 0;
 		z-index: 2;
-		opacity: 1;
+		/* opacity: 1; */
+		transition: clip-path .5s ease;
+
+		clip-path: inset(0% round 14px);
 		aspect-ratio: 0.91;
 	}
 	#selfie {
 		top: 0;
 		position: absolute;
-		z-index: 1;
-		opacity: 0;
+		z-index: 3;
+		/* opacity: 0; */
+		transition: clip-path .5s ease;
+		clip-path: inset(100%);
 	}
 
 	@media screen and (min-width: 1075px) {
@@ -323,5 +332,9 @@
 			align-self: center;
 			justify-self: center;
 		}
+	}
+
+	@keyframes fadein {
+
 	}
 </style>

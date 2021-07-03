@@ -97,10 +97,14 @@ code {
 }
 
 #pixels.transparent.transparent {
-	opacity: 0;
+	/* opacity: 0; */
+	clip-path: inset(100%);
 }
 #selfie.visible.visible {
-	opacity: 1;
+	/* opacity: 1; */
+	/* clip-path:polygon(); */
+
+	clip-path: inset(0% round 14px); 
 }
 
 .invalid-input {
