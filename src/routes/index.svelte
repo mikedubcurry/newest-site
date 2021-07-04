@@ -130,6 +130,7 @@
 			learn more about me by checking out the <a href="/about">About</a> page.
 		</p>
 		<div class="image">
+			<div class="clip">
 			<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
 			<img
 				loading="lazy"
@@ -139,6 +140,7 @@
 				src={pixels}
 				alt="a tasteful selfie"
 			/>
+		</div>
 		</div>
 	</div>
 	<h2>Check it Out</h2>
@@ -263,8 +265,13 @@
 		width: 100%;
 		height: 266px;
 		z-index: 2;
-		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
 
+	}
+	.clip {
+		/* display: flex; */
+		/* justify-content: stretch; */
+		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+		width: 250px ;
 	}
 	.welcome img {
 		align-self: center;
@@ -334,7 +341,4 @@
 		}
 	}
 
-	@keyframes fadein {
-
-	}
 </style>

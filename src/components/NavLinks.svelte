@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { base } from '$app/paths';
-	const dispatch = createEventDispatcher();
 </script>
 
 <nav>
@@ -31,5 +30,8 @@
 		flex-direction: column;
 		justify-content: space-evenly;
 		align-items: center;
+	}
+	a {
+		font-weight: 100;
 	}
 </style>

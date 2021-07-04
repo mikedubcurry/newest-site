@@ -94,7 +94,9 @@
 	}
 	h3 {
 		font-size: var(--medium-font-size);
+		font-family: Arial, Helvetica, sans-serif;
 	}
+
 	.job,
 	.prj,
 	.hobby {
