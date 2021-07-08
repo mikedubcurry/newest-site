@@ -1,14 +1,14 @@
 @font-face {
 	font-family: Roboto;
-	src: url('../fonts/Roboto-Regular.ttf');
+	src: url('assets/fonts/Roboto-Regular.ttf');
 }
 @font-face {
 	font-family: Roboto-light;
-	src: url('../fonts/Roboto-Light.ttf');
+	src: url('assets/fonts/Roboto-Light.ttf');
 }
 @font-face {
 	font-family: Roboto-mono;
-	src: url('../fonts/RobotoMono-VariableFont_wght.ttf');
+	src: url('assets/fonts/RobotoMono-VariableFont_wght.ttf');
 }
 :root {
 	--primary-color: #d7eaf3;
