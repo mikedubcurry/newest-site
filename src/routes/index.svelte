@@ -16,12 +16,12 @@
 						let img = document.getElementById('selfie') as HTMLImageElement;
 						let pxl = document.getElementById('pixels');
 						let selfie;
+						//@ts-ignore
 						import('../../assets/selfie-smallest.jpg').then((image) => {
 							selfie = image.default;
 							img.src = selfie;
 							pxl.classList.add('transparent');
 							img.classList.add('visible');
-							
 						});
 					}
 				});
@@ -114,7 +114,6 @@
 			clearTimeout(t);
 		}, 2000);
 	}
-
 </script>
 
 <svelte:head><title>Mike Curry - Home</title></svelte:head>
@@ -131,16 +130,16 @@
 		</p>
 		<div class="image">
 			<div class="clip">
-			<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
-			<img
-				loading="lazy"
-				id="pixels"
-				width="250"
-				height="266"
-				src={pixels}
-				alt="a tasteful selfie"
-			/>
-		</div>
+				<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
+				<img
+					loading="lazy"
+					id="pixels"
+					width="250"
+					height="266"
+					src={pixels}
+					alt="a tasteful selfie"
+				/>
+			</div>
 		</div>
 	</div>
 	<h2>Check it Out</h2>
@@ -265,13 +264,12 @@
 		width: 100%;
 		height: 266px;
 		z-index: 2;
-
 	}
 	.clip {
 		/* display: flex; */
 		/* justify-content: stretch; */
 		clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0 80%);
-		width: 250px ;
+		width: 250px;
 	}
 	.welcome img {
 		align-self: center;
@@ -284,9 +282,9 @@
 		top: 0;
 		z-index: 2;
 		/* opacity: 1; */
-		transition: clip-path .5s ease;
+		transition: clip-path 0.5s ease;
 
-		clip-path: inset(0% round 14px);
+		clip-path: inset(0% );
 		aspect-ratio: 0.91;
 	}
 	#selfie {
@@ -294,7 +292,7 @@
 		position: absolute;
 		z-index: 3;
 		/* opacity: 0; */
-		transition: clip-path .5s ease;
+		transition: clip-path 0.5s ease;
 		clip-path: inset(100%);
 	}
 
@@ -309,7 +307,7 @@
 		.image {
 			flex: 1;
 		}
-    
+
 		form {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -340,5 +338,4 @@
 			justify-self: center;
 		}
 	}
-
 </style>
