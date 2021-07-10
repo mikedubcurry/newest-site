@@ -10,10 +10,10 @@
 		height = window.innerHeight;
 		let event: string = 'ontouchstart' in document.documentElement ? 'touchmove' : 'mousemove';
 		document.body.addEventListener(event, (e: MouseEvent | TouchEvent) => {
-			console.log(e);
-
-			let x = event === 'touchmove' ? e.touches[0].clientX : e.clientX;
-			let y = event === 'touchmove' ? e.touches[0].clientY : e.clientY;
+			let x =
+				e.type === 'touchmove' ? (e as TouchEvent).touches[0].clientX : (e as MouseEvent).clientX;
+			let y =
+				e.type === 'touchmove' ? (e as TouchEvent).touches[0].clientY : (e as MouseEvent).clientY;
 			blur = y / 50 < 8 ? 8 : y / 50;
 			if (x > center) {
 				if (Math.abs(center - x) / 10 < shadowLimit)
@@ -69,26 +69,10 @@
 	header:hover::before {
 		height: calc(50px + 6rem);
 	}
-
-	.gradient-text {
-		/* Thank you Sarah Fosseim https://fossheim.io/writing/posts/css-text-gradient/ */
-		/* Fallback: Set a background color. */
-		background-color: var(--primary-color);
-
-		/* Create the gradient. */
-		background-image: linear-gradient(45deg, var(--accent-color), var(--primary-color));
-
-		/* Set the background size and repeat properties. */
-		background-size: 100%;
-		background-repeat: repeat;
-
-		/* Use the text as a mask for the background. */
-		/* This will show the gradient as a text color rather than element bg. */
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		-moz-background-clip: text;
-		background-clip: text;
-		-moz-text-fill-color: transparent;
+	@media(prefers-reduced-motion: reduce) {
+		h1 {
+			text-shadow: none !important;
+		}
 	}
 	.hidden {
 		color: transparent !important;
