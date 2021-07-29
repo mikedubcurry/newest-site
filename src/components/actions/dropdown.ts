@@ -1,4 +1,4 @@
-export function dropdown(node: HTMLElement, { isOpen, duration = 500 }: {isOpen: boolean, duration: number}) {
+export function dropdown(node: HTMLElement, { isOpen, duration = 300 }: {isOpen: boolean, duration: number}) {
 	let initialHeight = node.offsetHeight;
 	node.style.height = isOpen ? 'auto' : '0';
 	node.style.overflow = 'hidden';

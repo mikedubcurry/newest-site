@@ -31,7 +31,7 @@
 			duties: string[];
 		}[];
 	};
-	console.log(about);
+
 	const { aboutMe, hobbies, projects, workHistory } = about;
 </script>
 
