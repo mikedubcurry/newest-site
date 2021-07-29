@@ -151,7 +151,7 @@
                                     *@@@@@@@*   
 																		
 (https://manytools.org/hacker-tools/convert-images-to-ascii-art/go/)
-	`)
+	`);
 </script>
 
 <svelte:head><title>Mike Curry - Home</title></svelte:head>
@@ -159,13 +159,17 @@
 <section>
 	<h1>Welcome</h1>
 	<div class="welcome">
-		<p>
-			My name is Michael and I'm a web developer! I have been coding since 2017, and I started my
-			career in tech in 2020. I mostly write HTML, CSS and JavaScript and use many tools that
-			compile to those languages such as TypeScript or SvelteKit, React, etc. When I'm not writing
-			code, I like to spend time with my partner and our two cats, Humphrey and Hamilton. You can
-			learn more about me by checking out the <a href="/about">About</a> page.
-		</p>
+		<div class="text">
+			<p>
+				My name is Michael and I'm a web developer! I have been coding since 2017, and I started my
+				career in tech in 2020. I mostly write HTML, CSS and JavaScript and use many tools that
+				compile to those languages such as TypeScript or SvelteKit, React, etc.
+			</p>
+			<p>
+				When I'm not writing code, I like to spend time with my partner and our two cats, Humphrey
+				and Hamilton. You can learn more about me by checking out the <a href="/about">About</a> page.
+			</p>
+		</div>
 		<div class="image">
 			<div class="clip">
 				<img id="selfie" width="250" height="266" alt="a tasteful selfie" />
@@ -184,9 +188,11 @@
 	<p>
 		From time to time, I run across a challenging topic in programming and in order to help me
 		remember it better, I like to write about it. I'm still pretty new to blogging but you can find
-		my posts over <a aria-label="link to blog page" href={`${base}/blog`}>here</a>. Links to my
-		GitHub and Twitter profile are in the right-hand side nav bar, as well as the SvelteKit docs if
-		you're considerig building your own site using this dope technology.
+		my posts over <a aria-label="link to blog page" href={`${base}/blog`}>here</a>.
+	</p>
+	<p>
+		Links to my GitHub and Twitter profile are in the right-hand side nav bar, as well as the
+		SvelteKit docs if you're considerig building your own site using this dope technology.
 	</p>
 </section>
 <section>
@@ -322,7 +328,7 @@
 		/* opacity: 1; */
 		transition: clip-path 0.5s ease;
 
-		clip-path: inset(0% );
+		clip-path: inset(0%);
 		aspect-ratio: 0.91;
 	}
 	#selfie {
@@ -339,9 +345,10 @@
 			flex-direction: row;
 		}
 
-		.welcome p {
-			flex: 2;
-		}
+		/* .welcome p {
+			/* flex: 2; 
+		} */
+
 		.image {
 			flex: 1;
 		}

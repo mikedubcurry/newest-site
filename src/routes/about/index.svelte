@@ -13,6 +13,7 @@
 </script>
 
 <script lang="ts">
+	import Dropdown from '../../components/Dropdown.svelte';
 	export let about: {
 		aboutMe: string;
 		hobbies: { hobby: string; outlets: string[] }[];
@@ -45,46 +46,67 @@
 
 <h2>Hobbies</h2>
 <section>
-	{#each hobbies as hobby}
-		<div class="hobby">
-			<h3>{hobby.hobby}</h3>
-			<p>{hobby.outlets.join(' ')}</p>
-		</div>
+	{#each hobbies as hobby, i}
+		<Dropdown
+			style={i % 2 == 0
+				? '--dropdown-color: var(--accent-color-light);'
+				: '--dropdown-color: var(--secondary-color)'}
+			buttonText={hobby.hobby}
+		>
+			<div class="hobby">
+				<h3>{hobby.hobby}</h3>
+				<p>{hobby.outlets.join(' ')}</p>
+			</div>
+		</Dropdown>
 	{/each}
 </section>
 
 <h2>Projects</h2>
 <section>
-	{#each projects as prj}
-		<div class="prj">
-			{#if prj.liveLink}
-				<a href={prj.liveLink}><h3>{prj.title}</h3></a>
-			{:else}
-				<h3>{prj.title}</h3>
-			{/if}
-			<ul>
-				{#each prj.repo as repo}
-					<li><a href={repo.href}>{repo.text}</a></li>
-				{/each}
-			</ul>
-			<p>{prj.description}</p>
-		</div>
+	{#each projects as prj, i}
+		<Dropdown
+			style={i % 2 == 0
+				? '--dropdown-color: var(--accent-color-light);'
+				: '--dropdown-color: var(--secondary-color)'}
+			buttonText={prj.title}
+		>
+			<div class="prj">
+				{#if prj.liveLink}
+					<a href={prj.liveLink}><h3>{prj.title}</h3></a>
+				{:else}
+					<h3>{prj.title}</h3>
+				{/if}
+				<ul>
+					{#each prj.repo as repo}
+						<li><a href={repo.href}>{repo.text}</a></li>
+					{/each}
+				</ul>
+				<p>{prj.description}</p>
+			</div>
+		</Dropdown>
 	{/each}
 </section>
 
 <h2>Work History</h2>
 <section>
-	{#each workHistory as job}
-		<div class="job">
-			<h3>{job.position}</h3>
-			<p>{job.company}</p>
-			<p>{job.from} - {job.to}</p>
-			<ul>
-				{#each job.duties as duty}
-					<li>{duty}</li>
-				{/each}
-			</ul>
-		</div>
+	{#each workHistory as job, i}
+		<Dropdown
+			style={i % 2 == 0
+				? '--dropdown-color: var(--accent-color-light);'
+				: '--dropdown-color: var(--secondary-color)'}
+			buttonText={`${job.position}`}
+		>
+			<div class="job">
+				<!-- <h3>{job.position}</h3> -->
+				<h3>{job.company}</h3>
+				<p>{job.from} - {job.to}</p>
+				<ul>
+					{#each job.duties as duty}
+						<li>{duty}</li>
+					{/each}
+				</ul>
+			</div>
+		</Dropdown>
 	{/each}
 </section>
 
@@ -97,6 +119,10 @@
 		font-family: Arial, Helvetica, sans-serif;
 	}
 
+	div > p {
+		text-indent: unset;
+	}
+
 	.job,
 	.prj,
 	.hobby {
@@ -105,7 +131,7 @@
 	.job p,
 	.prj p,
 	.hobby p {
-		margin-left: 4rem;
+		margin-left: 2rem;
 	}
 	.job li,
 	.prj li {

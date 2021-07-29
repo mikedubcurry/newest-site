@@ -10,6 +10,7 @@
 		</li>
 		<li><a sveltekit:prefetch href={`${base}/about`}>About</a></li>
 		<li><a sveltekit:prefetch href={`${base}/blog`}>Blog</a></li>
+		<!-- <li><a href={`${base}/fun`}>Fun</a></li> -->
 	</ul>
 </nav>
 
