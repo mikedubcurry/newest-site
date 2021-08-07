@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ghLogo from './github-logo.svg';
-	import svelteLogo from './svelte-logo.svg';
-	import twitterLogo from './twitter-logo.svg';
+	import ghLogo from '$lib/github-logo.svg';
+	import svelteLogo from '$lib/svelte-logo.svg';
+	import twitterLogo from '$lib/twitter-logo.svg';
 </script>
 
 <nav>

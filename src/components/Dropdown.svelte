@@ -1,5 +1,5 @@
 <script>
-	import { dropdown } from './actions/dropdown';
+	import { dropdown } from '$lib/actions/dropdown';
 	export let buttonText = '';
   export let style = '';
 	export let isOpen = false;

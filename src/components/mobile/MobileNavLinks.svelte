@@ -46,7 +46,7 @@
 	.visible.otherLinks {
 		right: 0;
 	}
-	@media screen and (min-width: 500px) {
+	@media screen and (min-width: 600px) {
 		.otherLinks {
 			right: 0;
 			visibility: visible;

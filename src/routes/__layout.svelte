@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { browser } from '$app/env';
-	import Footer from '../components/Footer.svelte';
-	import Header from '../components/Header.svelte';
-	import MobileNavBtn from '../components/mobile/MobileNavBtn.svelte';
-	import MobileNavLinks from '../components/mobile/MobileNavLinks.svelte';
-	import NavLinks from '../components/NavLinks.svelte';
+	import Footer from '$lib/Footer.svelte';
+	import Header from '$lib/Header.svelte';
+	import MobileNavBtn from '$lib/mobile/MobileNavBtn.svelte';
+	import MobileNavLinks from '$lib/mobile/MobileNavLinks.svelte';
+	import NavLinks from '$lib/NavLinks.svelte';
 	import '../app.css';
-	import OtherLinks from '../components/OtherLinks.svelte';
+	import OtherLinks from '$lib/OtherLinks.svelte';
 
 	let w: number;
 

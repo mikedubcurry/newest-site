@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '../utils/form';
-	import pixels from '../../assets/selfie-pixel.jpg';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	let disabled = false;
@@ -56,21 +55,33 @@
 		event.currentTarget.removeAttribute('title');
 		return;
 	}
-	function validateEmail(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
+	function validateEmail(event: FocusEvent & { currentTarget: EventTarget & HTMLInputElement, target: EventTarget & HTMLInputElement }) {
 		const value = event.currentTarget.value;
 		if (!value || !value.includes('@')) {
 			event.currentTarget.classList.add('invalid-input');
 			event.currentTarget.setAttribute('title', 'Please enter your email');
+			let t = setTimeout(() => {
+			event.target.classList.remove('invalid-input');
+			clearTimeout(t);
+		}, 2000);
 			return;
 		}
 		let atindex = value.indexOf('@');
 		if (!value[atindex - 1] || !value[atindex + 1]) {
 			event.currentTarget.classList.add('invalid-input');
 			event.currentTarget.setAttribute('title', 'Please enter your email');
+			let t = setTimeout(() => {
+			event.target.classList.remove('invalid-input');
+			clearTimeout(t);
+		}, 2000);
 			return;
 		}
 		event.currentTarget.classList.remove('invalid-input');
 		event.currentTarget.removeAttribute('title');
+		let t = setTimeout(() => {
+			event.target.classList.remove('invalid-input');
+			clearTimeout(t);
+		}, 2000); 
 		return;
 	}
 	function validateMessage(
@@ -178,7 +189,7 @@
 					id="pixels"
 					width="250"
 					height="266"
-					src={pixels}
+					src="/assets/selfie-pixel.jpg"
 					alt="a tasteful selfie"
 				/>
 			</div>
@@ -269,7 +280,11 @@
 		display: flex;
 		flex-direction: column;
 	}
+	input{
+		transition: background-color .5s ease;
+	}
 	textarea {
+		transition: background-color .5s ease;
 		height: 15rem;
 		margin-block-end: 2rem;
 		border: 2px inset rgb(118, 118, 118);
@@ -308,6 +323,8 @@
 		width: 100%;
 		height: 266px;
 		z-index: 2;
+		margin: 2rem 0;
+		
 	}
 	.clip {
 		/* display: flex; */
@@ -351,6 +368,7 @@
 
 		.image {
 			flex: 1;
+			margin: 0 1rem;
 		}
 
 		form {

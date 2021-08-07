@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { base } from '$app/paths';
 </script>
 
@@ -32,7 +31,13 @@
 		justify-content: space-evenly;
 		align-items: center;
 	}
-	a {
-		font-weight: 100;
+	nav a {
+		text-decoration: none;
+		color: var(--text-color-dark);
+		font-weight: bold;
+		transition: color .2s ease;
+	}
+	nav a:hover {
+		color: var(--tertiary-color);
 	}
 </style>

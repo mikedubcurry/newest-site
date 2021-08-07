@@ -1,7 +1,3 @@
-<script lang="ts">
-	
-</script>
-
 <header>
 	<span class="hidden">ay lmao</span>
 	<h1 >Mike Curry</h1>
@@ -12,8 +8,6 @@
 		margin: 0;
 		font-family: Roboto-mono;
 		font-weight: 400;
-		/* text-shadow: 0 -8px 10px var(--dark-gray); */
-		/* transition: text-shadow .1s ease; */
 	}
 
 	header {
@@ -41,14 +35,7 @@
 		);
 		transition: height 0.3s ease;
 	}
-	header:hover::before {
-		height: calc(50px + 6rem);
-	}
-	@media(prefers-reduced-motion: reduce) {
-		h1 {
-			text-shadow: none !important;
-		}
-	}
+
 	.hidden {
 		color: transparent !important;
 		position: absolute;

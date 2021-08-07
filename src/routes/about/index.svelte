@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-	import Dropdown from '../../components/Dropdown.svelte';
+	import Dropdown from '$lib/Dropdown.svelte';
 	export let about: {
 		aboutMe: string;
 		hobbies: { hobby: string; outlets: string[] }[];

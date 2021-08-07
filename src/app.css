@@ -51,6 +51,7 @@ textarea {
 
 a {
 	color: var(--tertiary-color);
+	transition: transform .2s ease;
 }
 
 a:visited {
