@@ -18,7 +18,7 @@ export async function post(request: Request<any, FormData>) {
 	});
 	if (response.ok) {
 		const json = await response.json();
-		console.log(json);
+		// console.log(json);
 		if (json.status === 'success')
 			return {
 				status: 302,

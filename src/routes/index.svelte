@@ -189,7 +189,7 @@
 					id="pixels"
 					width="250"
 					height="266"
-					src="/assets/selfie-pixel.jpg"
+					src="/selfie-pixel.jpg"
 					alt="a tasteful selfie"
 				/>
 			</div>
