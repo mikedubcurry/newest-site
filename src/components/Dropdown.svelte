@@ -1,16 +1,15 @@
 <script>
 	import { dropdown } from '$lib/actions/dropdown';
 	export let buttonText = '';
-  export let style = '';
+	export let style = '';
 	export let isOpen = false;
 </script>
 
 <div>
-	<button {style} on:click={() => (isOpen = !isOpen)}><span class:isOpen>&#9650;</span>{buttonText}</button>
-	<div
-		class="accordianContent"
-		use:dropdown={{isOpen, duration: 200}}
+	<button {style} on:click={() => (isOpen = !isOpen)}
+		><span class:isOpen>&#9650;</span>{buttonText}</button
 	>
+	<div class="accordianContent" use:dropdown={{ isOpen, duration: 200 }}>
 		<div class="wrapper">
 			<slot />
 		</div>
@@ -25,8 +24,8 @@
 		text-align: left;
 		/* border: solid 1px #333; */
 		margin: 0;
-    cursor: pointer;
-    background-color: var(--dropdown-color);
+		cursor: pointer;
+		background-color: var(--dropdown-color);
 	}
 
 	span {
@@ -40,10 +39,10 @@
 	}
 	.accordianContent {
 		/* border-bottom: solid 1px #333; */
-    margin-bottom: 1rem;
+		margin-bottom: 1rem;
 		border-top: 0;
 	}
-  .wrapper {
-    padding: 20px;
-  }
+	.wrapper {
+		padding: 20px;
+	}
 </style>

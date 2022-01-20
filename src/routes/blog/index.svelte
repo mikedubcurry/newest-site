@@ -15,6 +15,9 @@
 </script>
 
 <script lang="ts">
+	import TagList from '$lib/TagList.svelte';
+import {fly} from 'svelte/transition'
+	
 	export let posts: { title: string; slug: string; summary: string; tags: string[] }[];
 	let selectedTags: string[] = [];
 	const allTags: string[] = posts.reduce((t, { tags }) => {
@@ -41,15 +44,16 @@
 
 <h1>Blog Posts</h1>
 
-<ul class="tag-list">
+<TagList {allTags} bind:selectedTags  />
+<!-- <ul class="tag-list">
 	{#each allTags as tag}
 		<li class="tag" class:selected={selectedTags.includes(tag)} on:click={clickTag}>{tag}</li>
 		&nbsp;
 	{/each}
 	{#if selectedTags.length}
-		<li class="tag clear" on:click={() => (selectedTags = [])}>clear</li>
+		<li transition:fly={{x: -50, duration: 200}} class="tag clear" on:click={() => (selectedTags = [])}>clear</li>
 	{/if}
-</ul>
+</ul> -->
 
 {#each filteredPosts as post}
 	<article>
@@ -78,17 +82,7 @@
 		font-size: var(--medium-font-size);
 	}
 
-	.tag-list {
-		list-style-type: none;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-	}
 
-	.tag-list .selected {
-		border: 2px var(--accent-color) solid;
-	}
 
 	.tag {
 		background-color: var(--secondary-color);
@@ -99,11 +93,7 @@
 		cursor: pointer;
 		margin-block-end: 1rem;
 		height: fit-content;
-	}
-
-	.clear {
-		background-color: var(--warn-color);
-		border: 2px solid var(--warn-color);
+		z-index: 10;
 	}
 
 	article:hover {
