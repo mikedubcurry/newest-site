@@ -35,7 +35,7 @@
 	const { aboutMe, hobbies, projects, workHistory } = about;
 </script>
 
-<sveltekit:head><title>Michael Curry - About</title></sveltekit:head>
+<svelte:head><title>Michael Curry - About</title></svelte:head>
 
 <h1>About Me</h1>
 <section>

@@ -3,9 +3,9 @@
 	import { onMount } from 'svelte';
 </script>
 
-<sveltekit:head>
+<svelte:head>
 	<title>Mike Curry - Home</title>
-</sveltekit:head>
+</svelte:head>
 
 <section>
 	<h1>Hey there!</h1>
