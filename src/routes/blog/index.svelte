@@ -37,7 +37,7 @@
 	});
 </script>
 
-<svelte:head><title>Mike Curry - Blog</title></svelte:head>
+<sveltekit:head><title>Mike Curry - Blog</title></sveltekit:head>
 
 <h1>Blog Posts</h1>
 

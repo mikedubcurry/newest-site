@@ -18,6 +18,6 @@
 	export let post;
 </script>
 
-<svelte:head><title>Mike Curry - {post.data.title}</title></svelte:head>
+<sveltekit:head><title>Mike Curry - {post.data.title}</title></sveltekit:head>
 
 {@html post.content}

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Poll from '$lib/Poll.svelte';
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 </script>
 
-<svelte:head>
+<sveltekit:head>
 	<title>Mike Curry - Home</title>
-</svelte:head>
+</sveltekit:head>
 
 <section>
 	<h1>Hey there!</h1>
@@ -13,7 +13,10 @@ import { onMount } from 'svelte';
 	<p class="answer"><strong>I do too!</strong></p>
 </section>
 
-<Poll  question="What's your favorite web programming language?" answers={['JavaScript', 'HTML', 'CSS', 'PHP']}/>
+<Poll
+	question="What's your favorite web programming language?"
+	answers={['JavaScript', 'HTML', 'CSS', 'PHP']}
+/>
 
 <style>
 	p {
