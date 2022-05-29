@@ -35,7 +35,7 @@
 		<OtherLinks slot="other-links" />
 	</MobileNavLinks>
 
-	<main on:click={resetMobileBtn}>
+	<main class:blurred={mobileBtnClicked} on:click={resetMobileBtn}>
 		<slot />
 	</main>
 	<Footer />
@@ -46,6 +46,12 @@
 		max-width: calc(100vw - 128px - 4rem);
 		overflow-x: hidden;
 		margin: 0 auto;
+		transition: all .5s ease;
+	}
+
+	.blurred {
+		filter: blur(4px);
+		transform: translateY(10px);
 	}
 
 	.wrapper {
