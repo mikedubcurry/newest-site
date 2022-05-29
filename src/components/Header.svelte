@@ -1,5 +1,4 @@
 <header>
-	<span class="hidden">ay lmao</span>
 	<h1 >Mike Curry</h1>
 </header>
 
@@ -34,12 +33,5 @@
 			#ffffff00 90%
 		);
 		transition: height 0.3s ease;
-	}
-
-	.hidden {
-		color: transparent !important;
-		position: absolute;
-		right: 20%;
-		top: 20px;
 	}
 </style>
