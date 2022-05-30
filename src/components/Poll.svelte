@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/env';
-	import { onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	export let question: string = "What's your favorite color?";
 	export let answers: [string, string, string, string] = ['red', 'yellow', 'blue', 'show results'];
@@ -10,6 +10,8 @@
 		votes[answer] = Math.floor(Math.random() * 10);
 		return votes;
 	}, {});
+
+	const dispatch = createEventDispatcher();
 
 	let voted: boolean = false;
 	let results: [string, number][];
@@ -36,6 +38,7 @@
 		let votedOn = document.querySelector<HTMLInputElement>("input[name='answer']:checked").value;
 		votes[votedOn] += 1;
 		voted = true;
+		dispatch('vote', votedOn)
 	}
 
 	if (browser) voted = JSON.parse(window.localStorage.getItem(`poll-${question}`) || 'false');
@@ -132,7 +135,7 @@
 		width: 0;
 		height: 100%;
 		background-color: var(--accent-color-light-alpha);
-		animation: showVotes 1.5s ease forwards;
+		animation: showVotes 1.5s ease-out forwards;
 	}
 	.answer:hover {
 		border: 1px solid var(--tertiary-color);
