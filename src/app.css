@@ -90,7 +90,7 @@ section {
 
 body {
 	color: var(--text-color-dark);
-	background-color: var(--primary-color);
+	background-color: var(--light-gray);
 	width: 100%;
 }
 

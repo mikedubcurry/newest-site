@@ -9,6 +9,7 @@
 	import OtherLinks from '$lib/OtherLinks.svelte';
 
 	let w: number;
+	let scrollY;
 
 	function handleMenuBtnChange() {
 		mobileBtnClicked = !mobileBtnClicked;
@@ -20,10 +21,26 @@
 	$: {
 		if (browser) {
 			w = window.innerWidth;
+			scrollY = window.screenTop;
+			console.log(scrollY);
+		}
+	}
+
+	let bodyBg = ('rgb(204, 204, 204)' as unknown) as CSSStyleDeclaration;
+	function handleScroll(e) {
+		const offsetHeight = document.body.offsetHeight - 100
+		if (window.innerHeight + window.scrollY >= offsetHeight) {
+			bodyBg = ('rgb(215, 234, 243)' as unknown) as CSSStyleDeclaration;
+		} else {
+			bodyBg = ('rgb(204, 204, 204)' as unknown) as CSSStyleDeclaration;
+		}
+		if (window.getComputedStyle(document.body) !== bodyBg) {
+			document.body.style.backgroundColor = (bodyBg as unknown) as string;
 		}
 	}
 </script>
 
+<svelte:window on:scroll={handleScroll} />
 <svelte:body on:click={resetMobileBtn} />
 <div class="wrapper">
 	<MobileNavBtn on:menubtnchange={handleMenuBtnChange} isX={mobileBtnClicked} />
@@ -46,7 +63,7 @@
 		max-width: calc(100vw - 128px - 4rem);
 		overflow-x: hidden;
 		margin: 0 auto;
-		transition: all .5s ease;
+		transition: all 0.5s ease;
 	}
 
 	.blurred {
@@ -59,6 +76,7 @@
 		min-height: 100vh;
 		position: relative;
 		width: 100%;
+		background-color: var(--primary-color);
 	}
 	@media screen and (max-width: 600px) {
 		main {
