@@ -9,7 +9,6 @@
 	import OtherLinks from '$lib/OtherLinks.svelte';
 
 	let w: number;
-	let scrollY;
 
 	function handleMenuBtnChange() {
 		mobileBtnClicked = !mobileBtnClicked;
@@ -21,11 +20,8 @@
 	$: {
 		if (browser) {
 			w = window.innerWidth;
-			scrollY = window.screenTop;
-			console.log(scrollY);
 		}
 	}
-
 	let bodyBg = ('rgb(204, 204, 204)' as unknown) as CSSStyleDeclaration;
 	function handleScroll(e) {
 		const offsetHeight = document.body.offsetHeight - 100
