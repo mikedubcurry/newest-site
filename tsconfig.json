@@ -1,5 +1,7 @@
 {
+	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+
 		"moduleResolution": "node",
 		"module": "es2020",
 		"lib": [
@@ -25,8 +27,10 @@
 		"allowJs": true,
 		"checkJs": true,
 		"paths": {
-			"$lib/*": [
-				"src_/lib/*"
+			"$lib":["src/components"],
+			"$lib/*":["src/components/*"],
+			"$app": [
+				".svelte-kit/dev/main/runtime/app"
 			],
 			"$app/*": [
 				".svelte-kit/dev/main/runtime/app/*"
