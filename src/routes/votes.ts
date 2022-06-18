@@ -6,7 +6,6 @@ const pollId = process.env.POLL_ID;
 const pollUrl = process.env.POLL_URL;
 
 export const post: RequestHandler = async ({ request }) => {
-	// console.log(await request.json());
 	const vote = await request.json();
 	const response = await fetch(`${pollUrl}/${pollId}`, {
 		method: 'POST',

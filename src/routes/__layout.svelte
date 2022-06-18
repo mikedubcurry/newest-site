@@ -12,9 +12,11 @@
 
 	function handleMenuBtnChange() {
 		mobileBtnClicked = !mobileBtnClicked;
+		document.body.classList.toggle('noscroll');
 	}
 	function resetMobileBtn() {
 		mobileBtnClicked = false;
+		document.body.classList.remove('noscroll');
 	}
 	let mobileBtnClicked = false;
 	$: {
@@ -24,7 +26,7 @@
 	}
 	let bodyBg = ('rgb(204, 204, 204)' as unknown) as CSSStyleDeclaration;
 	function handleScroll(e) {
-		const offsetHeight = document.body.offsetHeight - 100
+		const offsetHeight = document.body.offsetHeight - 100;
 		if (window.innerHeight + window.scrollY >= offsetHeight) {
 			bodyBg = ('rgb(215, 234, 243)' as unknown) as CSSStyleDeclaration;
 		} else {
@@ -69,11 +71,12 @@
 
 	.wrapper {
 		padding-bottom: 2.5rem;
-		min-height: 100vh;
+		min-height: 200vh;
 		position: relative;
 		width: 100%;
 		background-color: var(--primary-color);
 	}
+
 	@media screen and (max-width: 600px) {
 		main {
 			margin-inline: 2rem;

@@ -1,3 +1,10 @@
+@supports (padding: max(0px)) {
+	* {
+		padding-left: min(0vmin, env(safe-area-inset-left));
+		padding-right: min(0vmin, env(safe-area-inset-right));
+	}
+}
+
 @font-face {
 	font-family: Roboto;
 	src: url('/fonts/Roboto-Regular.ttf');
@@ -51,7 +58,7 @@ textarea {
 
 a {
 	color: var(--tertiary-color);
-	transition: transform .2s ease;
+	transition: transform 0.2s ease;
 }
 
 a:visited {
@@ -108,7 +115,6 @@ pre {
 }
 pre {
 	font-family: Roboto-mono;
-	
 }
 
 code {
@@ -130,9 +136,45 @@ code {
 	background-color: var(--warn-color, #ff5379);
 }
 
+.noscroll {
+	overflow: hidden;
+	position: relative;
+}
+html:where(.noscroll) {
+	border: red solid 1px;
+	overflow: hidden;
+}
+
+
+body::-webkit-scrollbar {
+	width: 8px;
+  }
+   
+  body::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  body::-webkit-scrollbar-thumb {
+	background-color: var(--dark-gray);
+	outline: 1px solid var(--light-gray);
+	border-radius: 4px;
+  }
+
+
 @media screen and (max-width: 600px) {
 	body {
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+@media only screen and (orientation: portrait) {
+	body {
+		width: 100%;
+	}
+}
+@media only screen and (orientation: landscape) {
+	body {
+		width: 90%; /* Shrink a little more to avoid the notch. */
 	}
 }

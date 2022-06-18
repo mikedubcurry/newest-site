@@ -1,20 +1,6 @@
-<!-- <script lang="ts" context="module">
-	export const load: Load = async ({ fetch,url }) => {
-		const response = await fetch(`${url}/votes`);
-		// if (response.ok) {
-// console.log( response.text());
-
-			
-		// const poll = await response.json();
-
-		return {
-			status: 200,
-		};
-		// }
-	};
-</script> -->
 <script lang="ts">
 	import Poll from '$lib/Poll.svelte';
+	// import BankAccount from '$lib/widgets/BankAccount.svelte';
 	import { onMount } from 'svelte';
 
 	async function getPoll() {
@@ -44,11 +30,12 @@
 	}
 
 	let poll;
+	let bioLength;
 
+	$: console.log(bioLength);
 	onMount(async () => {
 		let pollData = await getPoll();
-		poll = pollData.poll;
-		// console.log(poll);
+		poll = pollData?.poll;
 	});
 </script>
 
@@ -58,24 +45,63 @@
 
 <section>
 	<h1>Hey there!</h1>
-	<p>Do you like the web? Do you think the Internet is neat?</p>
-	<p class="answer"><strong>I do too!</strong></p>
+	<label for="bio-length"> Bio Length </label>
+	<select id="bio-length" bind:value={bioLength}>
+		<option value="short">Short</option>
+		<option value="medium">Medium</option>
+		<option value="long">Long</option>
+	</select>
+	<div class="bio" class:visible={bioLength === 'short'}>
+		<p>I'm Mike and I build on the web.</p>
+	</div>
+	<div class="bio" class:visible={bioLength === 'medium'}>
+		<p>
+			My name is Michael, and I am a web developer. My experiences span across the stack, but I have
+			primarily been focusing on backend as of late. I currrently work as a devloper at Troy Web
+			Consulting.
+		</p>
+	</div>
+	<div class="bio" class:visible={bioLength === 'long'}>
+		<p>
+			My name is Michael Curry, and I am a software engineer from the Hudson Valley. I live in
+			Saugerties, NY and work in the Capital Region at Troy Web Consulting.
+		</p>
+		<p>
+			I have been coding for about five years at the time of writing this (mid 2022). JavaScript is
+			my language of choice but I can be productive writing PHP. Both languages allow me the freedom
+			to work across the stack from the frontend to the database.
+		</p>
+	</div>
+</section>
+<section>
+	<h2>Some Fun Things I Made</h2>
+
+	<div class="game-card">
+		<h3>Tank Target Practice</h3>
+		<p>Control a tank and fire projectiles over a wall and hit the target!</p>
+	</div>
+
+	<div class="game-card">
+		<h3>Bomb-Duster</h3>
+		<p>Choose between 3 difficulty levels and dust for bombs in this fun puzzle game!</p>
+	</div>
+	<div class="game-card">
+		<h3>JS-808</h3>
+		<p>Make a beat with 808-ish drum samples!</p>
+	</div>
 </section>
 
-{#if poll}
+<!-- {#if poll}
 	<Poll question={poll.question} answers={poll.answers} votes={poll.votes} on:vote={handleVote} />
-{/if}
-
+{/if} -->
 <style>
 	p {
 		font-size: 1.6rem;
 	}
-	strong {
-		font-size: 1.5em;
-		text-transform: uppercase;
+	.bio {
+		display: none;
 	}
-	.answer {
-		text-align: right;
-		margin-right: 2rem;
+	.bio.visible {
+		display: block;
 	}
 </style>
