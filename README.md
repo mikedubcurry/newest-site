@@ -1,1 +1,0 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/88b74e4e-e3be-4610-ac0a-cfbcd043129c/deploy-status)](https://app.netlify.com/sites/stupefied-wescoff-dd22d0/deploys)
