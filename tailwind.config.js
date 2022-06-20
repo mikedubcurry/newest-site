@@ -9,9 +9,9 @@ module.exports = {
 				},
 				primary: '#d7eaf3',
 				secondary: '#77b5d9',
-				tertiary: "#14297d"
+				tertiary: '#14297d',
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/typography')],
 };
