@@ -29,30 +29,34 @@
 		<Card>
 			<h3>Github</h3>
 			<p>Check out my <a href="https://github.com/mikedubcurry">GitHub profile</a>.</p>
-      <p>I am interested in frontend technologies, but I also have a lot of experience with backend and serverless technologies.</p>
-    </Card>
-    <Card>
-      <h3>Soundcloud</h3>
-      <p>Check out my <a href="https://soundcloud.com/mikedubcurry">Soundcloud</a>.</p>
-      <p>I mostly make electronic music, but I also make some rap beats.</p>
-    </Card>
+			<p>
+				I am interested in frontend technologies, but I also have a lot of experience with backend
+				and serverless technologies.
+			</p>
+		</Card>
+		<Card>
+			<h3>Soundcloud</h3>
+			<p>Check out my <a href="https://soundcloud.com/mikedubcurry">Soundcloud</a>.</p>
+			<p>I mostly make electronic music, but I also make some rap beats.</p>
+		</Card>
 	</section>
 </div>
 <div class="block">
-<h2>Fun Stuff</h2>
-<section>
-  <Card>
-    <h3>Minesweeper</h3>
-    <p>Play a game of <a href="https://mikedubcurry.github.io/minesweeper">Minesweeper</a>.</p>
-  </Card>
-  <Card>
-    <h3>Tank Game</h3>
-    <p>Play a game of <a href="https://mikedubcurry.github.io/tank-game">Tank Game</a>.</p>
-  </Card>
-  <Card>
-    <h3>Make a Beat</h3>
-    <p>Make a beat with <a href="https://mikedubcurry.github.io/browser-daw">Browser Daw</a>.</p>
-  </Card>
+	<h2>Fun Stuff</h2>
+	<section>
+		<Card>
+			<h3>Minesweeper</h3>
+			<p>Play a game of <a href="https://mikedubcurry.github.io/minesweeper">Minesweeper</a>.</p>
+		</Card>
+		<Card>
+			<h3>Tank Game</h3>
+			<p>Play a game of <a href="https://mikedubcurry.github.io/tank-game">Tank Game</a>.</p>
+		</Card>
+		<Card>
+			<h3>Make a Beat</h3>
+			<p>Make a beat with <a href="https://mikedubcurry.github.io/browser-daw">Browser Daw</a>.</p>
+		</Card>
+	</section>
 </div>
 
 <style>
