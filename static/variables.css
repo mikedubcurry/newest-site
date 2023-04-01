@@ -1,0 +1,17 @@
+:root {
+  --dark-body: #1A120B;
+  --dark-bg: #232C33;
+  --dark-link: #B4A5A5;
+  --dark-action: #F6F1F1;
+
+  --light-body: #F6F1F1;
+  --light-bg: #19A7CE;
+  --light-link: #000;
+  --light-action: #1A120B;
+
+  --theme-bg: var(--light-bg);
+  --theme-body: var(--light-body);
+  --theme-link: var(--light-link);
+  --theme-action: var(--light-action);
+}
+
