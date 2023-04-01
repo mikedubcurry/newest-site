@@ -10,7 +10,11 @@ module.exports = {
 	},
 	parserOptions: {
 		sourceType: 'module',
+<<<<<<< HEAD
 		ecmaVersion: 2019
+=======
+		ecmaVersion: 2020
+>>>>>>> 01e28b0 (initial commit v2)
 	},
 	env: {
 		browser: true,
